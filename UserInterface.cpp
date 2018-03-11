@@ -194,6 +194,11 @@ void UserInterface::showAllDepositsOnScreen(const bool& noTransaction, const str
 	}
 }
 
+void UserInterface::showNoTransactionsOnScreen() const
+{
+	outputLine("NO TRANSACTIONS N BANK ACCOUNT");
+}
+
 //---------------------------------------------------------------------------
 // private support member functions
 //---------------------------------------------------------------------------

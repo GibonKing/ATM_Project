@@ -145,6 +145,8 @@ void ATM::executeAccountCommand() {
 					break;
 				case 5: m_acct5_showAllDepositsTransactions();
 					break;
+				case 7: m_acct7_searchForTransactions();
+					break;
 				default:theUI_.showErrorInvalidCommand();
 			}
 			theUI_.wait();
@@ -202,6 +204,48 @@ void ATM::m_acct5_showAllDepositsTransactions() const {
 
 	theUI_.showAllDepositsOnScreen(noTransaction, str, total);
 }
+
+
+//---option 7
+void ATM::m_acct7_searchForTransactions() 
+{
+	assert(p_theActiveAccount_ != nullptr);
+	bool isEmpty = (p_theActiveAccount_->isEmptyTransactionList());
+
+	//If the transaction list is empty
+	if (isEmpty)
+	{
+		//Show mssage to screen
+		theUI_.showNoTransactionsOnScreen();
+	}
+	//Else start searching for transactions
+	else
+	{
+		searchTransactions();
+	}
+
+
+}
+
+//------Search Functions
+void ATM::searchTransactions() 
+{
+	//theUI_.showSearchMenu();
+	//int option = theUI_.readInSearchCommand();
+
+	//switch (option)
+	//{
+	//case 1:
+	//	break;
+	//case 2:
+	//	break;
+	//case 3:
+	//	break;
+	//default:
+	//	break;
+	//}
+}
+
 
 //------private file functions
 
