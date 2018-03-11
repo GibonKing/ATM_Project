@@ -52,6 +52,7 @@ private:
 
 	//Search Menu Commands
 	void m_trl_showTransactionsForAmount() const;
+	void sm2_showTransactionsForTitle() const;
 
     //support file handling functions and creation of dynamic objects
     bool canOpenFile(const string&) const;

@@ -124,6 +124,19 @@ void BankAccount::produceTransactionsForAmount(const int& a, int& n, string& str
 	str = trl.toFormattedString();
 }
 
+void BankAccount::produceTransactionsForTitle(const string& t, int& n, string& str)
+{
+	//Make a copy of all transactions with that amount in them
+	TransactionList trl = transactions_.getTransactionsForTitle(t);
+
+	//Save that lists size
+	n = trl.size();
+
+	//Format the string ready for output in UI
+	str = trl.toFormattedString();
+}
+
+
 
 const string BankAccount::prepareFormattedStatement() const {
 	ostringstream os;

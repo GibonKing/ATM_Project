@@ -22,6 +22,7 @@ public:
 	double getTotalTransactions() const;
 	List<Transaction> getTransactionList() const;
 	TransactionList getTransactionsForAmount(const double&) const;
+	TransactionList getTransactionsForTitle(const string&) const;
 
 	//Mutators
 	void   addNewTransaction(const Transaction&);

@@ -53,7 +53,18 @@ public:
 	void showSearchMenu() const;
 	int readInSearchCommand() const;
 	double readInAmount() const;
-	void showMatchingTransactionsOnScreen(const int&, const int&, const string&) const;
+	string readInString() const;
+	//void showMatchingTransactionsOnScreen(const int&, const int&, const string&) const;
+
+	template <class T>
+	void showMatchingTransactionsOnScreen(const T& criteria, const int& size, const string& message) const
+	{
+		outputHeader("SEARCH RESULTS");
+		cout << "\n THERE ARE " << size << " TRANSACTIONS IN BANK ACCOUNT MATCHING SEARCH CRITERIA : "  << criteria;
+
+		cout << "\n		 " << message;
+
+	}
 	
 
 private:

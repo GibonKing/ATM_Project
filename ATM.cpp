@@ -239,6 +239,17 @@ void ATM::m_trl_showTransactionsForAmount() const
 	theUI_.showMatchingTransactionsOnScreen(a, n, str);
 }
 
+void ATM::sm2_showTransactionsForTitle() const
+{
+	//Get a string
+	string t = theUI_.readInString();
+	int n;
+	string str;
+	p_theActiveAccount_->produceTransactionsForTitle(t, n, str);
+	//
+	theUI_.showMatchingTransactionsOnScreen(t, n, str);
+}
+
 //------Search Functions
 void ATM::searchTransactions() 
 {
@@ -255,7 +266,7 @@ void ATM::searchTransactions()
 		m_trl_showTransactionsForAmount();
 		break;
 	case 1:
-		//sm2_showTransactionsForTitle();
+		sm2_showTransactionsForTitle();
 		break;
 	case 2:
 		//sm3_showTransactionsForDate();

@@ -209,16 +209,16 @@ void UserInterface::showSearchMenu() const
 	outputLine("----------------------------------------");
 }
 
-void UserInterface::showMatchingTransactionsOnScreen(const int& amount, const int& size, const string& message) const
-{
-	
-	outputHeader("SEARCH RESULTS");
-	cout << "\n THERE ARE " << size << " TRANSACTIONS IN BANK ACCOUNT MATCHING SEARCH CRITERIA "<< char(156) << amount;
-	
-	cout << "\n		 " << message;
-
-
-}
+//void UserInterface::showMatchingTransactionsOnScreen(const int& amount, const int& size, const string& message) const
+//{
+//	
+//	outputHeader("SEARCH RESULTS");
+//	cout << "\n THERE ARE " << size << " TRANSACTIONS IN BANK ACCOUNT MATCHING SEARCH CRITERIA "<< char(156) << amount;
+//	
+//	cout << "\n		 " << message;
+//
+//
+//}
 
 
 //---------------------------------------------------------------------------
@@ -239,6 +239,15 @@ int UserInterface::readInCommand() const
 	int com;
 	cin >> com;
 	return com;
+}
+
+string UserInterface::readInString() const
+{
+	cout << "\n";
+	outputLine("ENTER YOUR SEARCH CRITERIA: ");
+	string str;
+	cin >> str;
+	return str;
 }
 
 //3b
