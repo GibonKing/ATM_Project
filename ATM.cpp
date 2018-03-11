@@ -235,7 +235,7 @@ void ATM::m_trl_showTransactionsForAmount() const
 	//
 	int n;
 	string str;
-	produceTransactionsForAmount(a, n, r);
+	produceTransactionsForAmount(a, n, str);
 
 	//theUI_.showMatchingTransactionsOnScreen(a, n, str);
 }
