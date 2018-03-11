@@ -246,6 +246,8 @@ int UserInterface::readInSearchCommand() const
 
 double UserInterface::readInAmount() const
 {
+	outputLine("INPUT THE AMOUNT TO SEARCH FOR: ");
+
 	double amount;
 	cin >> amount;
 

@@ -26,6 +26,25 @@ List<Transaction> TransactionList::getTransactionList() const
 	return listOfTransactions_;
 }
 
+TransactionList TransactionList::getTransactionsForAmount(const double& a) const
+{
+	//Copy of list
+	List<Transaction> trlist = listOfTransactions_;
+	TransactionList trReturn;
+	//For every item in the list
+	for (int i(0); i < trlist.length(); i++)
+	{
+		if (trlist.first().getAmount() == a)
+		{
+			trReturn.addNewTransaction(trlist.first());
+		}
+		//Go to next transaction
+		trlist = trlist.tail();
+	}
+
+	return trReturn;
+}
+
 //____other public member functions
 
 void TransactionList::addNewTransaction(const Transaction& tr) {

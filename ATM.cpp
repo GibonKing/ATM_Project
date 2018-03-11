@@ -232,12 +232,11 @@ void ATM::m_trl_showTransactionsForAmount() const
 {
 	//Get a value
 	double a = theUI_.readInAmount();
-	//
 	int n;
 	string str;
-	produceTransactionsForAmount(a, n, str);
+	p_theActiveAccount_->produceTransactionsForAmount(a, n, str);
 
-	//theUI_.showMatchingTransactionsOnScreen(a, n, str);
+	theUI_.showMatchingTransactionsOnScreen(a, n, str);
 }
 
 //------Search Functions
@@ -252,13 +251,13 @@ void ATM::searchTransactions()
 
 	switch (option)
 	{
-	case 1:
+	case 0:
 		m_trl_showTransactionsForAmount();
 		break;
-	case 2:
+	case 1:
 		//sm2_showTransactionsForTitle();
 		break;
-	case 3:
+	case 2:
 		//sm3_showTransactionsForDate();
 		break;
 	}

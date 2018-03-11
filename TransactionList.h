@@ -18,10 +18,12 @@
 
 class TransactionList {
 public:
-
+	//Assessors
 	double getTotalTransactions() const;
 	List<Transaction> getTransactionList() const;
+	TransactionList getTransactionsForAmount(const double&) const;
 
+	//Mutators
 	void   addNewTransaction(const Transaction&);
     const Transaction newestTransaction() const;
     const  TransactionList olderTransactions() const;

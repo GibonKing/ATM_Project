@@ -111,6 +111,19 @@ string BankAccount::produceAllDepositTransactions(double& total)
 	return str;
 }
 
+//Q3b
+void BankAccount::produceTransactionsForAmount(const int& a, int& n, string& str)
+{
+	//Make a copy of all transactions with that amount in them
+	TransactionList trl = transactions_.getTransactionsForAmount(a);
+
+	//Save that lists size
+	n = trl.size();
+
+	//Format the string ready for output in UI
+	str = trl.toFormattedString();
+}
+
 
 const string BankAccount::prepareFormattedStatement() const {
 	ostringstream os;
