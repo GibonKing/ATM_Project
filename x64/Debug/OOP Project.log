@@ -1,3 +1,13 @@
-﻿  BankAccount.cpp
-  OOP Project.vcxproj -> F:\Programming\Object Oriented\TEst\ATMSimulation\x64\Debug\OOP Project.exe
-  OOP Project.vcxproj -> F:\Programming\Object Oriented\TEst\ATMSimulation\x64\Debug\OOP Project.pdb (Partial PDB)
+﻿  UserInterface.cpp
+c:\users\dave\desktop\atm_project\userinterface.cpp(239): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\dave\desktop\atm_project\userinterface.cpp(239): warning C4267: 'initializing': conversion from 'size_t' to 'const int', possible loss of data
+  TransactionList.cpp
+  Transaction.cpp
+  Time.cpp
+  Date.cpp
+  ATM.cpp
+  Card.cpp
+  BankAccount.cpp
+  __Task1c_Main.cpp
+  Generating Code...
+  OOP Project.vcxproj -> C:\Users\Dave\Desktop\ATM_Project\x64\Debug\OOP Project.exe
