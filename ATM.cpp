@@ -227,23 +227,41 @@ void ATM::m_acct7_searchForTransactions()
 
 }
 
+//------search menu options
+void ATM::m_trl_showTransactionsForAmount() const
+{
+	//Get a value
+	double a = theUI_.readInAmount();
+	//
+	int n;
+	string str;
+	produceTransactionsForAmount(a, n, r);
+
+	//theUI_.showMatchingTransactionsOnScreen(a, n, str);
+}
+
 //------Search Functions
 void ATM::searchTransactions() 
 {
-	//theUI_.showSearchMenu();
-	//int option = theUI_.readInSearchCommand();
+	//Show UI
+	theUI_.showSearchMenu();
+	
+	//Read Input
+	int option = theUI_.readInSearchCommand();
+	assert(option <= 3 && option >= 0);
 
-	//switch (option)
-	//{
-	//case 1:
-	//	break;
-	//case 2:
-	//	break;
-	//case 3:
-	//	break;
-	//default:
-	//	break;
-	//}
+	switch (option)
+	{
+	case 1:
+		m_trl_showTransactionsForAmount();
+		break;
+	case 2:
+		//sm2_showTransactionsForTitle();
+		break;
+	case 3:
+		//sm3_showTransactionsForDate();
+		break;
+	}
 }
 
 

@@ -50,6 +50,10 @@ private:
 	void m_acct5_showAllDepositsTransactions() const;
 	void m_acct7_searchForTransactions();
 
+	//Search Menu Commands
+	void m_trl_showTransactionsForAmount() const;
+
+
     //support file handling functions and creation of dynamic objects
     bool canOpenFile(const string&) const;
 	static char getAccountTypeCode(const string&);

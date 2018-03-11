@@ -50,6 +50,9 @@ public:
 	
 	//3b
 	void showNoTransactionsOnScreen() const;
+	void showSearchMenu() const;
+	int readInSearchCommand() const;
+	double readInAmount() const;
 
 private:
 	//support functions

@@ -199,6 +199,16 @@ void UserInterface::showNoTransactionsOnScreen() const
 	outputLine("NO TRANSACTIONS IN BANK ACCOUNT");
 }
 
+void UserInterface::showSearchMenu() const
+{
+	outputHeader("SEARCH MENU");
+	outputLine(" 0                     Search By Amount ");
+	outputLine(" 1                      Search By Title ");
+	outputLine(" 2                       Search By Date ");
+	outputLine(" 3                                 Exit ");
+	outputLine("----------------------------------------");
+}
+
 //---------------------------------------------------------------------------
 // private support member functions
 //---------------------------------------------------------------------------
@@ -217,6 +227,29 @@ int UserInterface::readInCommand() const
 	int com;
 	cin >> com;
 	return com;
+}
+
+//3b
+int UserInterface::readInSearchCommand() const
+{
+	int command = readInCommand();
+
+	//If command is not valid
+	while (command > 3 || command < 0)
+	{
+		showErrorInvalidCommand();
+		command = readInCommand();
+	}
+
+	return command;
+}
+
+double UserInterface::readInAmount() const
+{
+	double amount;
+	cin >> amount;
+
+	return amount;
 }
 
 void UserInterface::showErrorInvalidCommand() const
