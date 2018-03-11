@@ -31,17 +31,20 @@ TransactionList TransactionList::getTransactionsForAmount(const double& a) const
 	//Copy of list
 	List<Transaction> trlist = listOfTransactions_;
 	TransactionList trReturn;
-	//For every item in the list
-	for (int i(0); i < trlist.length(); i++)
+	//For every item in the list (Most recent first)
+	for (int i(0); i < listOfTransactions_.length(); i++)
 	{
+		//If first item in list is correct value
 		if (trlist.first().getAmount() == a)
 		{
+			//Add it to temporary transaction list
 			trReturn.addNewTransaction(trlist.first());
 		}
 		//Go to next transaction
 		trlist = trlist.tail();
 	}
 
+	//Return ammended transaction list
 	return trReturn;
 }
 

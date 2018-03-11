@@ -53,6 +53,8 @@ public:
 	void showSearchMenu() const;
 	int readInSearchCommand() const;
 	double readInAmount() const;
+	void showMatchingTransactionsOnScreen(const int&, const int&, const string&) const;
+	
 
 private:
 	//support functions

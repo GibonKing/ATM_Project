@@ -209,6 +209,18 @@ void UserInterface::showSearchMenu() const
 	outputLine("----------------------------------------");
 }
 
+void UserInterface::showMatchingTransactionsOnScreen(const int& amount, const int& size, const string& message) const
+{
+	
+	outputHeader("SEARCH RESULTS");
+	cout << "\n THERE ARE " << size << " TRANSACTIONS IN BANK ACCOUNT MATCHING SEARCH CRITERIA "<< char(156) << amount;
+	
+	cout << "\n		 " << message;
+
+
+}
+
+
 //---------------------------------------------------------------------------
 // private support member functions
 //---------------------------------------------------------------------------
