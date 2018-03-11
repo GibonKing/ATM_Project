@@ -17,13 +17,39 @@
 
 //Getters
 
-double TransactionList::getTotalTransactions() const {
+double TransactionList::getTotalNumberTransactions() const {
 	return size();
+}
+
+double TransactionList::getTotalTransactions() const
+{
+	double cumulativeTotal(0);
+	const int count = size();
+	List<Transaction> trl = getTransactionList();
+
+	for (int i = 0; i < count; i++)
+	{
+		cumulativeTotal = cumulativeTotal + trl.first().getAmount();
+		trl = trl.tail();
+	}
+	return cumulativeTotal;
 }
 
 List<Transaction> TransactionList::getTransactionList() const
 {
 	return listOfTransactions_;
+}
+
+TransactionList TransactionList::getMostRecentTransactions(const int& noOfTransactions) const
+{
+	List<Transaction> trl = listOfTransactions_;
+	TransactionList trlRecent;
+	for (int i = 0; i < noOfTransactions; i++)
+	{
+		trlRecent.addNewTransaction(trl.first());
+		trl = trl.tail();
+	}
+	return trlRecent;
 }
 
 //____other public member functions

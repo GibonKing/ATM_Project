@@ -19,8 +19,12 @@
 class TransactionList {
 public:
 
+	double getTotalNumberTransactions() const;
 	double getTotalTransactions() const;
 	List<Transaction> getTransactionList() const;
+
+	//Q3a
+	TransactionList getMostRecentTransactions(const int&) const;
 
 	void   addNewTransaction(const Transaction&);
     const Transaction newestTransaction() const;

@@ -140,6 +140,11 @@ double UserInterface::readInDepositAmount() const {
 	return (readInPositiveAmount());
 }
 
+int UserInterface::readInNumberOfTransactions() const{
+	//ask for the number of transactions to be retrieved
+	outputLine("NUMBER OF TRANSACTIONS TO SHOW: ");
+	return (readInPositiveNumber());
+}
 
 //output functions
 
@@ -194,6 +199,22 @@ void UserInterface::showAllDepositsOnScreen(const bool& noTransaction, const str
 	}
 }
 
+void UserInterface::showMiniStatementOnScreen(const bool& isEmpty, const double& total, const string& miniStatement) const
+{
+	if (!isEmpty)
+	{
+		cout << "\n		RECENT TRANSACTIONS REQUESTED AT time ON date";
+		cout << miniStatement;
+		cout << "\n		CUMULATIVE AMOUNT OF TRANSACTIONS: \234" << total;
+	}
+	else
+		cout << "\n		NO TRANSACTIONS IN BANK ACCOUNT";
+}
+
+void UserInterface::showNoTransactionsOnScreen() const {
+	outputLine("NO TRANSACTIONS IN BANK ACCOUNT");
+}
+
 //---------------------------------------------------------------------------
 // private support member functions
 //---------------------------------------------------------------------------
@@ -231,6 +252,21 @@ double UserInterface::readInPositiveAmount() const
 	}
 
 	return amount;
+}
+
+int UserInterface::readInPositiveNumber() const
+{
+	int amount;
+	cin >> amount;
+
+	while (amount <= 0)
+	{
+		outputLine("INVALID NUMBER OF TRANSACTIONS, TRY AGAIN: ");
+		cin >> amount;
+	}
+
+	return amount;
+
 }
 
 void UserInterface::outputHeader(const string& header) const

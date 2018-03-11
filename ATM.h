@@ -44,6 +44,7 @@ private:
     void m_acct3_depositToBankAccount();
     void m_acct4_produceStatement() const;
 	void m_acct5_showAllDepositsTransactions() const;
+	void m_acct6_showMiniStatement() const;
 
     //support file handling functions and creation of dynamic objects
     bool canOpenFile(const string&) const;
