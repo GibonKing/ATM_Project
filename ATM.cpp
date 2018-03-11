@@ -250,6 +250,19 @@ void ATM::sm2_showTransactionsForTitle() const
 	theUI_.showMatchingTransactionsOnScreen(t, n, str);
 }
 
+void ATM::sm3_showTransactionsForDate() const
+{
+	int day, month, year;
+	theUI_.readInDate(day, month, year);
+	Date d(day, month, year);
+
+	int n;
+	string str;
+	p_theActiveAccount_->produceTransactionsForDate(d, n, str);
+
+	theUI_.showMatchingTransactionsOnScreen(d, n, str);
+}
+
 //------Search Functions
 void ATM::searchTransactions() 
 {
@@ -269,7 +282,7 @@ void ATM::searchTransactions()
 		sm2_showTransactionsForTitle();
 		break;
 	case 2:
-		//sm3_showTransactionsForDate();
+		sm3_showTransactionsForDate();
 		break;
 	}
 }

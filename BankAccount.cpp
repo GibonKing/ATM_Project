@@ -136,6 +136,13 @@ void BankAccount::produceTransactionsForTitle(const string& t, int& n, string& s
 	str = trl.toFormattedString();
 }
 
+void BankAccount::produceTransactionsForDate(const Date& d, int& n, string& str)
+{
+	TransactionList trl = transactions_.getTransactionsForDate(d);
+	n = trl.size();
+	str = trl.toFormattedString();
+}
+
 
 
 const string BankAccount::prepareFormattedStatement() const {

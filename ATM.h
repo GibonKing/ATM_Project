@@ -50,9 +50,10 @@ private:
 	void m_acct5_showAllDepositsTransactions() const;
 	void m_acct7_searchForTransactions();
 
-	//Search Menu Commands
+	//Search Menu Commands (3b)
 	void m_trl_showTransactionsForAmount() const;
 	void sm2_showTransactionsForTitle() const;
+	void sm3_showTransactionsForDate() const;
 
     //support file handling functions and creation of dynamic objects
     bool canOpenFile(const string&) const;

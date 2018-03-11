@@ -23,6 +23,7 @@ public:
 	List<Transaction> getTransactionList() const;
 	TransactionList getTransactionsForAmount(const double&) const;
 	TransactionList getTransactionsForTitle(const string&) const;
+	TransactionList getTransactionsForDate(const Date&) const;
 
 	//Mutators
 	void   addNewTransaction(const Transaction&);

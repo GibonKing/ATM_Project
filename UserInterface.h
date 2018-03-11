@@ -54,7 +54,7 @@ public:
 	int readInSearchCommand() const;
 	double readInAmount() const;
 	string readInString() const;
-	//void showMatchingTransactionsOnScreen(const int&, const int&, const string&) const;
+	void readInDate(int&, int&, int&) const;
 
 	template <class T>
 	void showMatchingTransactionsOnScreen(const T& criteria, const int& size, const string& message) const

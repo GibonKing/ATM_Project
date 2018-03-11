@@ -140,7 +140,6 @@ double UserInterface::readInDepositAmount() const {
 	return (readInPositiveAmount());
 }
 
-
 //output functions
 
 void UserInterface::showProduceBalanceOnScreen(double balance) const
@@ -248,6 +247,41 @@ string UserInterface::readInString() const
 	string str;
 	cin >> str;
 	return str;
+}
+
+void UserInterface::readInDate(int& day, int& month, int&year) const
+{
+	//int day, month, year;
+
+	//Get a valid day
+	cout << "\n";
+	outputLine("ENTER THE DAY TO SEARCH (1 - 31): ");
+
+	cin >> day;
+
+	while (day < 1 || day > 31)
+	{
+		outputLine("INVALID DAY, TRY AGAIN: ");
+		cin >> day;
+	}
+
+	//Get a valid month
+	cout << "\n";
+	outputLine("ENTER THE MONTH TO SEARCH (1 - 12): ");
+
+	cin >> month;
+
+	while (month < 1 || month > 12)
+	{
+		outputLine("INVALID MONTH, TRY AGAIN: ");
+		cin >> month;
+	}
+
+	//Get a valid Year
+	cout << "\n";
+	outputLine("ENTER THE YEAR TO SEARCH: ");
+
+	cin >> year;
 }
 
 //3b
