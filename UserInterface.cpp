@@ -140,6 +140,7 @@ double UserInterface::readInDepositAmount() const {
 	return (readInPositiveAmount());
 }
 
+
 //output functions
 
 void UserInterface::showProduceBalanceOnScreen(double balance) const
@@ -192,33 +193,6 @@ void UserInterface::showAllDepositsOnScreen(const bool& noTransaction, const str
 		cout << "\n      " << str;
 	}
 }
-
-void UserInterface::showNoTransactionsOnScreen() const
-{
-	outputLine("NO TRANSACTIONS IN BANK ACCOUNT");
-}
-
-void UserInterface::showSearchMenu() const
-{
-	outputHeader("SEARCH MENU");
-	outputLine(" 0                     Search By Amount ");
-	outputLine(" 1                      Search By Title ");
-	outputLine(" 2                       Search By Date ");
-	outputLine(" 3                                 Exit ");
-	outputLine("----------------------------------------");
-}
-
-//void UserInterface::showMatchingTransactionsOnScreen(const int& amount, const int& size, const string& message) const
-//{
-//	
-//	outputHeader("SEARCH RESULTS");
-//	cout << "\n THERE ARE " << size << " TRANSACTIONS IN BANK ACCOUNT MATCHING SEARCH CRITERIA "<< char(156) << amount;
-//	
-//	cout << "\n		 " << message;
-//
-//
-//}
-
 
 //---------------------------------------------------------------------------
 // private support member functions
@@ -328,6 +302,21 @@ double UserInterface::readInPositiveAmount() const
 	return amount;
 }
 
+int UserInterface::readInPositiveNumber() const
+{
+	int amount;
+	cin >> amount;
+
+	while (amount <= 0)
+	{
+		outputLine("INVALID NUMBER OF TRANSACTIONS, TRY AGAIN: ");
+		cin >> amount;
+	}
+
+	return amount;
+
+}
+
 void UserInterface::outputHeader(const string& header) const
 {
 	// calculate lengths so we can centre the header
@@ -352,4 +341,52 @@ string UserInterface::askForInput(const string& promptForUser) const
 void UserInterface::outputLine(const string& text) const
 {
 	cout << "\n      " << text;
+}
+int UserInterface::readInNumberOfTransactions() const{
+	//ask for the number of transactions to be retrieved
+	outputLine("NUMBER OF TRANSACTIONS TO SHOW: ");
+	return (readInPositiveNumber());
+}
+
+void UserInterface::showNoTransactionsOnScreen() const
+{
+	outputLine("NO TRANSACTIONS IN BANK ACCOUNT");
+}
+
+void UserInterface::showSearchMenu() const
+{
+	outputHeader("SEARCH MENU");
+	outputLine(" 0                     Search By Amount ");
+	outputLine(" 1                      Search By Title ");
+	outputLine(" 2                       Search By Date ");
+	outputLine(" 3                                 Exit ");
+	outputLine("----------------------------------------");
+}
+
+//void UserInterface::showMatchingTransactionsOnScreen(const int& amount, const int& size, const string& message) const
+//{
+//	
+//	outputHeader("SEARCH RESULTS");
+//	cout << "\n THERE ARE " << size << " TRANSACTIONS IN BANK ACCOUNT MATCHING SEARCH CRITERIA "<< char(156) << amount;
+//	
+//	cout << "\n		 " << message;
+//
+//
+//}
+
+
+void UserInterface::showMiniStatementOnScreen(const bool& isEmpty, const double& total, const string& miniStatement) const
+{
+	if (!isEmpty)
+	{
+		cout << "\n		RECENT TRANSACTIONS REQUESTED AT time ON date";
+		cout << miniStatement;
+		cout << "\n		CUMULATIVE AMOUNT OF TRANSACTIONS: \234" << total;
+	}
+	else
+		cout << "\n		NO TRANSACTIONS IN BANK ACCOUNT";
+}
+
+void UserInterface::showNoTransactionsOnScreen() const {
+	outputLine("NO TRANSACTIONS IN BANK ACCOUNT");
 }

@@ -145,6 +145,8 @@ void ATM::executeAccountCommand() {
 					break;
 				case 5: m_acct5_showAllDepositsTransactions();
 					break;
+				case 6: m_acct6_showMiniStatement();
+					break;
 				case 7: m_acct7_searchForTransactions();
 					break;
 				default:theUI_.showErrorInvalidCommand();
@@ -204,7 +206,25 @@ void ATM::m_acct5_showAllDepositsTransactions() const {
 
 	theUI_.showAllDepositsOnScreen(noTransaction, str, total);
 }
+//---option 6
+void ATM::m_acct6_showMiniStatement() const {
+	assert(p_theActiveAccount_ != nullptr);
 
+	bool isEmpty = p_theActiveAccount_->isEmptyTransactionList();
+	string str;
+	double total;
+
+	if (!isEmpty) //If transaction list is not empty
+	{
+		const int noOfTransactions = theUI_.readInNumberOfTransactions();
+
+		p_theActiveAccount_->produceNMostRecentTransactions(noOfTransactions, str, total);
+
+	}
+	const string mad = p_theActiveAccount_->prepareFormattedAccountDetails();
+
+	theUI_.showMiniStatementOnScreen(isEmpty, total, mad+str);
+}
 
 //---option 7
 void ATM::m_acct7_searchForTransactions() 

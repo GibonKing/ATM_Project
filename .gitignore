@@ -30,6 +30,9 @@
 *.exe
 *.out
 *.app
+
+*.ipch
+
 \.vs/OOP Project/v15/ipch/AutoPCH/a9fa9fba67d2dd1a/__TASK1C_MAIN\.ipch
 
 \.vs/OOP Project/v15/\.suo

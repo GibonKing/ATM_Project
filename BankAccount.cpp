@@ -57,6 +57,20 @@ const TransactionList BankAccount::getAllDepositTransactions() const {
 bool BankAccount::isEmptyTransactionList() const {
 	return transactions_.size() == 0;
 }
+//Q3a
+void BankAccount::produceNMostRecentTransactions(const int& noOfTransactions, string& recentTransactions, double& totalAmount) const
+{
+	int count = noOfTransactions;
+	int maxTransactions = transactions_.getTotalNumberTransactions();
+	if (count > maxTransactions)
+		count = maxTransactions;
+
+	TransactionList trl = transactions_.getMostRecentTransactions(count);
+
+	totalAmount = trl.getTotalTransactions();
+	recentTransactions = trl.toFormattedString();
+}
+
 //static
 const string BankAccount::getAccountType(const string& filename) {
 	return getAccountType(filename[13]); //14th char from the filename ("data/account_101.txt")
@@ -105,7 +119,7 @@ string BankAccount::produceAllDepositTransactions(double& total)
 {
 	TransactionList trl = getAllDepositTransactions();
 
-	total = trl.getTotalTransactions();
+	total = trl.getTotalNumberTransactions();
 	string str = trl.toFormattedString();
 
 	return str;
@@ -153,6 +167,18 @@ const string BankAccount::prepareFormattedStatement() const {
 	os << prepareFormattedTransactionList();
 	return os.str();
 }
+
+const string BankAccount::prepareFormattedMiniAccountDetails() const
+{
+	ostringstream os;
+
+	os << prepareFormattedAccountDetails();
+
+	os << prepareFormattedTransactionList();
+
+	return os.str();
+}
+
 void BankAccount::readInBankAccountFromFile(const string& fileName) {
 	ifstream fromFile;
 	fromFile.open(fileName.c_str(), ios::in); 	//open file in read mode

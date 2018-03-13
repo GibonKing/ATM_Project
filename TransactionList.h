@@ -19,11 +19,16 @@
 class TransactionList {
 public:
 	//Assessors
+
+	double getTotalNumberTransactions() const;
 	double getTotalTransactions() const;
 	List<Transaction> getTransactionList() const;
 	TransactionList getTransactionsForAmount(const double&) const;
 	TransactionList getTransactionsForTitle(const string&) const;
 	TransactionList getTransactionsForDate(const Date&) const;
+
+	//Q3a
+	TransactionList getMostRecentTransactions(const int&) const;
 
 	//Mutators
 	void   addNewTransaction(const Transaction&);

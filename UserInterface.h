@@ -35,12 +35,15 @@ public:
 	void showCardAccounts(const string& cardNum, const string& cardSt) const;
 	const string readInAccountToBeProcessed() const;
 	void showValidateAccountOnScreen(int valid, const string& acctNum) const;
+	void showMiniStatementOnScreen(const bool&, const double&, const string&) const;
 
 	static const string cardFilename(const string& cn);
 	static const string accountFilename(const string& an);
 
 	double readInWithdrawalAmount() const;
 	double readInDepositAmount() const;
+
+	int readInNumberOfTransactions() const;
 
 	void showProduceBalanceOnScreen(double bal) const;
 	void showDepositOnScreen(bool auth, double deposit) const;
@@ -71,6 +74,7 @@ private:
 	//support functions
 	int readInCommand() const;
 	double readInPositiveAmount() const;
+	int readInPositiveNumber() const;
 	void outputHeader(const string&) const;
 	string askForInput(const string&) const;
 	void outputLine(const string&) const;

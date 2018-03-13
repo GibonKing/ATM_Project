@@ -47,6 +47,9 @@ public:
 	//Q1
 	string produceAllDepositTransactions(double&);
 
+	//Q3a
+	void produceNMostRecentTransactions(const int& noOfTransactions, string& recentTransactions, double& totalAmount) const;
+
 	//Q3b
 	void produceTransactionsForAmount(const int&, int&, string&);
 	void produceTransactionsForTitle(const string&, int&, string&);
@@ -59,6 +62,7 @@ public:
 	istream& getAccountDataFromStream(istream& is);
 
 	const string prepareFormattedAccountDetails() const;
+	const string prepareFormattedMiniAccountDetails() const;
 	const string prepareFormattedTransactionList() const;
 
 	static const string getAccountType(const string& filename);

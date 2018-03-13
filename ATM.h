@@ -48,6 +48,7 @@ private:
     void m_acct3_depositToBankAccount();
     void m_acct4_produceStatement() const;
 	void m_acct5_showAllDepositsTransactions() const;
+	void m_acct6_showMiniStatement() const;
 	void m_acct7_searchForTransactions();
 
 	//Search Menu Commands (3b)
