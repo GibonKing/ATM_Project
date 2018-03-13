@@ -64,6 +64,8 @@ void ATM::executeCardCommand(int option) {
 					{
 					case 1: m_card1_manageIndividualAccount();
 						break;
+					case 2: m_card1_showFundsAvailableOnAllAccounts();
+						break;
 						default:
 							theUI_.showErrorInvalidCommand();
 					}
@@ -96,6 +98,12 @@ int ATM::validateCard(const string& filename) const {
 		else
 			//card valid (exists and linked to at least one bank account)
 			return VALID_CARD;
+}
+
+void ATM::m_card1_showFundsAvailableOnAllAccounts()
+{
+	assert(p_theCard_ != nullptr);
+	List<string> accts = p_theCard_->getAccountsList();
 }
 int ATM::validateAccount(const string& filename) const {
 	//check that the account is valid 
