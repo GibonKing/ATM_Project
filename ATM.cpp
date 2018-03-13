@@ -145,6 +145,8 @@ void ATM::executeAccountCommand() {
 					break;
 				case 5: m_acct5_showAllDepositsTransactions();
 					break;
+				case 7: m_acct7_searchForTransactions();
+					break;
 				default:theUI_.showErrorInvalidCommand();
 			}
 			theUI_.wait();
@@ -202,6 +204,89 @@ void ATM::m_acct5_showAllDepositsTransactions() const {
 
 	theUI_.showAllDepositsOnScreen(noTransaction, str, total);
 }
+
+
+//---option 7
+void ATM::m_acct7_searchForTransactions() 
+{
+	assert(p_theActiveAccount_ != nullptr);
+	bool isEmpty = (p_theActiveAccount_->isEmptyTransactionList());
+
+	//If the transaction list is empty
+	if (isEmpty)
+	{
+		//Show mssage to screen
+		theUI_.showNoTransactionsOnScreen();
+	}
+	//Else start searching for transactions
+	else
+	{
+		searchTransactions();
+	}
+
+
+}
+
+//------search menu options
+void ATM::m_trl_showTransactionsForAmount() const
+{
+	//Get a value
+	double a = theUI_.readInAmount();
+	int n;
+	string str;
+	p_theActiveAccount_->produceTransactionsForAmount(a, n, str);
+
+	theUI_.showMatchingTransactionsOnScreen(a, n, str);
+}
+
+void ATM::sm2_showTransactionsForTitle() const
+{
+	//Get a string
+	string t = theUI_.readInString();
+	int n;
+	string str;
+	p_theActiveAccount_->produceTransactionsForTitle(t, n, str);
+	//
+	theUI_.showMatchingTransactionsOnScreen(t, n, str);
+}
+
+void ATM::sm3_showTransactionsForDate() const
+{
+	int day, month, year;
+	theUI_.readInDate(day, month, year);
+	Date d(day, month, year);
+
+	int n;
+	string str;
+	p_theActiveAccount_->produceTransactionsForDate(d, n, str);
+
+	theUI_.showMatchingTransactionsOnScreen(d, n, str);
+}
+
+//------Search Functions
+void ATM::searchTransactions() 
+{
+	//Show UI
+	theUI_.showSearchMenu();
+	
+	//Read Input
+	int option = theUI_.readInSearchCommand();
+	assert(option <= 3 && option >= 0);
+
+	switch (option)
+	{
+	case 0:
+		m_trl_showTransactionsForAmount();
+		break;
+	case 1:
+		sm2_showTransactionsForTitle();
+		break;
+	case 2:
+		sm3_showTransactionsForDate();
+		break;
+	}
+}
+
 
 //------private file functions
 

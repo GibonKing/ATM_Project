@@ -47,6 +47,11 @@ public:
 	//Q1
 	string produceAllDepositTransactions(double&);
 
+	//Q3b
+	void produceTransactionsForAmount(const int&, int&, string&);
+	void produceTransactionsForTitle(const string&, int&, string&);
+	void produceTransactionsForDate(const Date&, int&, string&);
+
 	//functions to put data into and get data from streams
 	ostream& putDataInStream(ostream& os) const;
 	ostream& putAccountDetailsInStream(ostream& os) const;

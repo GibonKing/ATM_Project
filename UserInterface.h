@@ -47,6 +47,25 @@ public:
 	void showWithdrawalOnScreen(bool auth, double withdrawal) const;
 	void showStatementOnScreen(const string&) const;
 	void showAllDepositsOnScreen(const bool&, const string&, const double&) const;
+	
+	//3b
+	void showNoTransactionsOnScreen() const;
+	void showSearchMenu() const;
+	int readInSearchCommand() const;
+	double readInAmount() const;
+	string readInString() const;
+	void readInDate(int&, int&, int&) const;
+
+	template <class T>
+	void showMatchingTransactionsOnScreen(const T& criteria, const int& size, const string& message) const
+	{
+		outputHeader("SEARCH RESULTS");
+		cout << "\n THERE ARE " << size << " TRANSACTIONS IN BANK ACCOUNT MATCHING SEARCH CRITERIA : "  << criteria;
+
+		cout << "\n		 " << message;
+
+	}
+	
 
 private:
 	//support functions

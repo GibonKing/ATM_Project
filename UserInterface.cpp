@@ -140,7 +140,6 @@ double UserInterface::readInDepositAmount() const {
 	return (readInPositiveAmount());
 }
 
-
 //output functions
 
 void UserInterface::showProduceBalanceOnScreen(double balance) const
@@ -194,6 +193,33 @@ void UserInterface::showAllDepositsOnScreen(const bool& noTransaction, const str
 	}
 }
 
+void UserInterface::showNoTransactionsOnScreen() const
+{
+	outputLine("NO TRANSACTIONS IN BANK ACCOUNT");
+}
+
+void UserInterface::showSearchMenu() const
+{
+	outputHeader("SEARCH MENU");
+	outputLine(" 0                     Search By Amount ");
+	outputLine(" 1                      Search By Title ");
+	outputLine(" 2                       Search By Date ");
+	outputLine(" 3                                 Exit ");
+	outputLine("----------------------------------------");
+}
+
+//void UserInterface::showMatchingTransactionsOnScreen(const int& amount, const int& size, const string& message) const
+//{
+//	
+//	outputHeader("SEARCH RESULTS");
+//	cout << "\n THERE ARE " << size << " TRANSACTIONS IN BANK ACCOUNT MATCHING SEARCH CRITERIA "<< char(156) << amount;
+//	
+//	cout << "\n		 " << message;
+//
+//
+//}
+
+
 //---------------------------------------------------------------------------
 // private support member functions
 //---------------------------------------------------------------------------
@@ -212,6 +238,75 @@ int UserInterface::readInCommand() const
 	int com;
 	cin >> com;
 	return com;
+}
+
+string UserInterface::readInString() const
+{
+	cout << "\n";
+	outputLine("ENTER YOUR SEARCH CRITERIA: ");
+	string str;
+	cin >> str;
+	return str;
+}
+
+void UserInterface::readInDate(int& day, int& month, int&year) const
+{
+	//int day, month, year;
+
+	//Get a valid day
+	cout << "\n";
+	outputLine("ENTER THE DAY TO SEARCH (1 - 31): ");
+
+	cin >> day;
+
+	while (day < 1 || day > 31)
+	{
+		outputLine("INVALID DAY, TRY AGAIN: ");
+		cin >> day;
+	}
+
+	//Get a valid month
+	cout << "\n";
+	outputLine("ENTER THE MONTH TO SEARCH (1 - 12): ");
+
+	cin >> month;
+
+	while (month < 1 || month > 12)
+	{
+		outputLine("INVALID MONTH, TRY AGAIN: ");
+		cin >> month;
+	}
+
+	//Get a valid Year
+	cout << "\n";
+	outputLine("ENTER THE YEAR TO SEARCH: ");
+
+	cin >> year;
+}
+
+//3b
+int UserInterface::readInSearchCommand() const
+{
+	int command = readInCommand();
+
+	//If command is not valid
+	while (command > 3 || command < 0)
+	{
+		showErrorInvalidCommand();
+		command = readInCommand();
+	}
+
+	return command;
+}
+
+double UserInterface::readInAmount() const
+{
+	outputLine("INPUT THE AMOUNT TO SEARCH FOR: ");
+
+	double amount;
+	cin >> amount;
+
+	return amount;
 }
 
 void UserInterface::showErrorInvalidCommand() const
