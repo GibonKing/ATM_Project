@@ -194,6 +194,11 @@ void UserInterface::showAllDepositsOnScreen(const bool& noTransaction, const str
 	}
 }
 
+void UserInterface::showFundsAvailableOnScreen(const bool& empty, const string& details, const double& funds) const
+{
+
+}
+
 //---------------------------------------------------------------------------
 // private support member functions
 //---------------------------------------------------------------------------

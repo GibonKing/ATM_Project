@@ -104,6 +104,21 @@ void ATM::m_card1_showFundsAvailableOnAllAccounts()
 {
 	assert(p_theCard_ != nullptr);
 	List<string> accts = p_theCard_->getAccountsList();
+
+	bool empty = accts.isEmpty();
+	double maxBorrowable(0.0);
+	string accountDetails("");
+
+	while (!empty)
+	{
+		BankAccount* p_acct = activateAccount(accts.first());
+		maxBorrowable += p_acct->maxBorrowable();
+		accountDetails += p_acct->prepareFormattedAccountDetails();
+		releaseAccount(p_acct, "account_"+ (p_acct->getAccountNumber()));
+		accts.deleteFirst();
+	}
+	theUI_.showFundsAvailableOnScreen();
+
 }
 int ATM::validateAccount(const string& filename) const {
 	//check that the account is valid 
