@@ -22,8 +22,10 @@
 
 class SavingsAccount :public BankAccount {
 public:
-	double getMinimumBalance();
+	SavingsAccount();
+	~SavingsAccount();
+	double getMinimumBalance() const;
 private:
-	double minimumBalance;
+	double minimumBalance_;
 };
 #endif

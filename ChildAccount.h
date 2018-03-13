@@ -14,7 +14,7 @@
 //#include "Transaction.h"
 //#include "TransactionList.h"
 //#include "BankAccount.h"
-#include "SavingsAccount.h""
+#include "SavingsAccount.h"
 
 //#include <fstream>
 //#include <cassert>
@@ -23,10 +23,12 @@
 
 class ChildAccount :public SavingsAccount {
 public:
-	double getMaximumPaidIn();
-	double getMinimumPaidOut();
+	ChildAccount();
+	~ChildAccount();
+	double getMaximumPaidIn() const;
+	double getMinimumPaidOut() const;
 private:
-	double maximumPaidIn;
-	double minimumPaidOut;
+	double maximumPaidIn_;
+	double minimumPaidIn_;
 };
 #endif

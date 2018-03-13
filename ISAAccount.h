@@ -14,22 +14,24 @@
 //#include "Transaction.h"
 //#include "TransactionList.h"
 //#include "BankAccount.h"
-#include "SavingsAccount.h""
+#include "SavingsAccount.h"
 
 //#include <fstream>
 //#include <cassert>
 //using namespace std;
 
 
-class ChildAccount :public SavingsAccount {
+class ISAAccount :public SavingsAccount {
 public:
-	double getMaximumYearlyDeposit();
-	double getCurrentYearlyDeposit();
-	Date getEndDepositPeriod();
+	ISAAccount();
+	~ISAAccount();
+	double getMaximumYearlyDeposit() const;
+	double getCurrentYearlyDeposit() const;
+	Date getEndDepositPeriod() const;
 private:
-	double maximumYearlyDeposit;
-	double currentYearlyDeposit;
-	double endDepositPeriod;
+	double maximumYearlyDeposit_;
+	double currentYearlyDeposit_;
+	Date endDepositPeriod_;
 	void updateCurrentYearlyDeposit(double a);
 };
 #endif
