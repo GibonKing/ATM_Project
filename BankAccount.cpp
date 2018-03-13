@@ -19,9 +19,9 @@
 BankAccount::BankAccount()
 	: balance_(0.0)
 {}
+
 BankAccount::~BankAccount()
 {}
-
 
 //____other public member functions
 
@@ -69,7 +69,8 @@ const string BankAccount::getAccountType(char n) {
 	switch (n)
 	{
 	case BANKACCOUNT_TYPE:		return "BANK"; 
-//	case CURRENTACCOUNT_TYPE:	return "CURRENT"; break;
+	case CURRENTACCOUNT_TYPE:	return "CURRENT"; 
+
 //etc..
 	default:					return "UNKNOWN";
 	}
@@ -174,12 +175,6 @@ istream& BankAccount::getTransactionsDataFromStream(istream& is) {
 	is >> transactions_;					//get all transactions from stream (if any)
 	return is;
 }
-//---------------------------------------------------------------------------
-//private support member functions
-//---------------------------------------------------------------------------
-void BankAccount::updateBalance(double amount) {
-	balance_ += amount;   //add/take amount to/from balance_
-}
 const string BankAccount::prepareFormattedAccountDetails() const
 {
 	assert(getAccountType(accountNumber_[0]) != "UNKNOWN");
@@ -210,6 +205,13 @@ const string BankAccount::prepareFormattedTransactionList() const
 
 	return os.str();
 }
+//---------------------------------------------------------------------------
+//private support member functions
+//---------------------------------------------------------------------------
+void BankAccount::updateBalance(double amount) {
+	balance_ += amount;   //add/take amount to/from balance_
+}
+
 
 
 //---------------------------------------------------------------------------

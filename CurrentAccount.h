@@ -10,19 +10,17 @@
 //CurrentAccount: class declaration
 //---------------------------------------------------------------------------
 
-//#include "Date.h"
-//#include "Transaction.h"
-//#include "TransactionList.h"
 #include "BankAccount.h"
 
-//#include <fstream>
-//#include <cassert>
-//using namespace std;
-
-
-class CurrentAccount :public BankAccount {
+class CurrentAccount : public BankAccount 
+{
 public:
-	double getOverdraftLimit();
+	CurrentAccount();
+	~CurrentAccount();
+
+	double getOverdraftLimit() const;
+	virtual double maxBorrowable() const;
+	virtual const string prepareFormattedAccountDetails() const;
 private:
 	double overdraftLimit;
 };

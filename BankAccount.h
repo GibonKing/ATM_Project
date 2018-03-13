@@ -10,20 +10,19 @@
 //BankAccount: class declaration
 //---------------------------------------------------------------------------
 
-//#include "Date.h"
-//#include "Transaction.h"
 #include "TransactionList.h"
 
 #include <fstream>
 #include <cassert>
+
 using namespace std;
 
-
-class BankAccount {
+class BankAccount 
+{
 public:
     //constructors & destructor
 	BankAccount();
-    ~BankAccount();
+    virtual ~BankAccount() = 0;
 
 	//getter (assessor) functions
     const string getAccountNumber() const;
@@ -37,7 +36,7 @@ public:
 
     void recordDeposit(double amount);
 
-	double maxBorrowable() const;
+	virtual double maxBorrowable() const;
 	bool canWithdraw(double amount) const;
     void recordWithdrawal(double amount);
 
@@ -53,7 +52,7 @@ public:
 	istream& getDataFromStream(istream& is);
 	istream& getAccountDataFromStream(istream& is);
 
-	const string prepareFormattedAccountDetails() const;
+	virtual const string prepareFormattedAccountDetails() const;
 	const string prepareFormattedTransactionList() const;
 
 	static const string getAccountType(const string& filename);

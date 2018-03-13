@@ -254,8 +254,8 @@ BankAccount* ATM::activateAccount(const string& filename) {
 	BankAccount* p_BA(nullptr);
 	switch (getAccountTypeCode(filename))
 	{
-		case BANKACCOUNT_TYPE:	//NOT NEEDED WITH ABSTRACT CLASSES
-			p_BA = new BankAccount;    //points to a BankAccount object
+		case CURRENTACCOUNT_TYPE:	//NOT NEEDED WITH ABSTRACT CLASSES
+			p_BA = new CurrentAccount;    //points to a BankAccount object
 			break;
 	}
 	assert(p_BA != nullptr); //check that the dynamic allocation has succeeded
