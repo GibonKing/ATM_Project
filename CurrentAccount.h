@@ -21,6 +21,7 @@ public:
 	double getOverdraftLimit() const;
 	virtual double maxBorrowable() const;
 	virtual const string prepareFormattedAccountDetails() const;
+
 private:
 	double overdraftLimit;
 };

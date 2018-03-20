@@ -22,7 +22,7 @@ class BankAccount
 public:
     //constructors & destructor
 	BankAccount();
-    virtual ~BankAccount() = 0;
+    ~BankAccount();
 
 	//getter (assessor) functions
     const string getAccountNumber() const;
@@ -52,7 +52,7 @@ public:
 	istream& getDataFromStream(istream& is);
 	istream& getAccountDataFromStream(istream& is);
 
-	virtual const string prepareFormattedAccountDetails() const;
+	virtual const string prepareFormattedAccountDetails() const = 0; //Pure virtual function
 	const string prepareFormattedTransactionList() const;
 
 	static const string getAccountType(const string& filename);
