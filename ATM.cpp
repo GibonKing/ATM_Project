@@ -149,6 +149,9 @@ void ATM::executeAccountCommand() {
 					break;
 				case 7: m_acct7_searchForTransactions();
 					break;
+				case 8:
+					m_acct8_clearAllTransactionsUpToDate();
+					break;
 				default:theUI_.showErrorInvalidCommand();
 			}
 			theUI_.wait();
@@ -206,6 +209,7 @@ void ATM::m_acct5_showAllDepositsTransactions() const {
 
 	theUI_.showAllDepositsOnScreen(noTransaction, str, total);
 }
+
 //---option 6
 void ATM::m_acct6_showMiniStatement() const {
 	assert(p_theActiveAccount_ != nullptr);
@@ -244,7 +248,33 @@ void ATM::m_acct7_searchForTransactions()
 		searchTransactions();
 	}
 
+}
 
+void ATM::m_acct8_clearAllTransactionsUpToDate()
+{
+	assert(p_theActiveAccount_ != nullptr);
+	bool isEmpty = (p_theActiveAccount_->isEmptyTransactionList());
+
+	Date d;
+	string str = "";
+	int n = 0;
+
+	if (!isEmpty)
+	{
+		Date cd = p_theActiveAccount_->getCreationDate();
+		d = theUI_.readInValidDate(cd);
+		p_theActiveAccount_->produceTransactionsUpToDate(d, n, str);
+	}
+
+	theUI_.showTransactionsUpToDateOnScreen(isEmpty, d, n, str);
+
+	if (!isEmpty && str != "")
+	{
+		bool deletionConfirmed = theUI_.readInConfirmDeletion();
+
+		if (deletionConfirmed)
+			p_theActiveAccount_->recordDeletionOfTransactionUpToDate(d);
+	}
 }
 
 //------search menu options
@@ -272,6 +302,7 @@ void ATM::sm2_showTransactionsForTitle() const
 
 void ATM::sm3_showTransactionsForDate() const
 {
+	//zerostring test maybe
 	int day, month, year;
 	theUI_.readInDate(day, month, year);
 	Date d(day, month, year);
@@ -303,6 +334,8 @@ void ATM::searchTransactions()
 		break;
 	case 2:
 		sm3_showTransactionsForDate();
+		break;
+	default:
 		break;
 	}
 }

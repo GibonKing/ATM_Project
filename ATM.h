@@ -50,6 +50,7 @@ private:
 	void m_acct5_showAllDepositsTransactions() const;
 	void m_acct6_showMiniStatement() const;
 	void m_acct7_searchForTransactions();
+	void m_acct8_clearAllTransactionsUpToDate();
 
 	//Search Menu Commands (3b)
 	void m_trl_showTransactionsForAmount() const;

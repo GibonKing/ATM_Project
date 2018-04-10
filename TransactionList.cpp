@@ -120,6 +120,32 @@ TransactionList TransactionList::getTransactionsForDate(const Date& d) const
 	return trReturn;
 }
 
+TransactionList TransactionList::getTransactionsUpToDate(const Date& d) const
+{
+
+	//ADD RECURSION TO ALL GET TRANSACTIONS
+
+	//Copy of list
+	List<Transaction> trlist = listOfTransactions_;
+	TransactionList trReturn;
+
+	//For every item in the list (Most recent first)
+	for (int i(0); i < listOfTransactions_.length(); i++)
+	{
+		//If first date in list is less than or equal to given date
+		if (!(trlist.first().getDate() > d))
+		{
+			//Add it to temporary transaction list
+			trReturn.addNewTransaction(trlist.first());
+		}
+		//Go to next transaction
+		trlist = trlist.tail();
+	}
+
+	//Return ammended transaction list
+	return trReturn;
+}
+
 
 //____other public member functions
 

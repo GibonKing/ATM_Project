@@ -51,9 +51,14 @@ public:
 	void produceNMostRecentTransactions(const int& noOfTransactions, string& recentTransactions, double& totalAmount) const;
 
 	//Q3b
-	void produceTransactionsForAmount(const int&, int&, string&);
+	void produceTransactionsForAmount(const double&, int&, string&);
 	void produceTransactionsForTitle(const string&, int&, string&);
 	void produceTransactionsForDate(const Date&, int&, string&);
+
+	//Q3c
+	void produceTransactionsUpToDate(const Date&, int&, string&);
+	void recordDeletionOfTransactionUpToDate(const Date& d);
+
 
 	//functions to put data into and get data from streams
 	ostream& putDataInStream(ostream& os) const;

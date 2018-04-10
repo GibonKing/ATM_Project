@@ -17,6 +17,8 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include "Date.h"
+
 using namespace std;
 
 class UserInterface {
@@ -42,6 +44,7 @@ public:
 
 	double readInWithdrawalAmount() const;
 	double readInDepositAmount() const;
+	Date readInValidDate(Date d) const;
 
 	int readInNumberOfTransactions() const;
 
@@ -58,6 +61,11 @@ public:
 	double readInAmount() const;
 	string readInString() const;
 	void readInDate(int&, int&, int&) const;
+
+	//3c
+	void showTransactionsUpToDateOnScreen(bool, Date, int, string) const;
+	bool readInConfirmDeletion() const;
+
 
 	template <class T>
 	void showMatchingTransactionsOnScreen(const T& criteria, const int& size, const string& message) const

@@ -23,12 +23,18 @@ public:
 	double getTotalNumberTransactions() const;
 	double getTotalTransactions() const;
 	List<Transaction> getTransactionList() const;
+
+	//Q3a
+	TransactionList getMostRecentTransactions(const int&) const;
+
+	//Q3b
 	TransactionList getTransactionsForAmount(const double&) const;
 	TransactionList getTransactionsForTitle(const string&) const;
 	TransactionList getTransactionsForDate(const Date&) const;
 
-	//Q3a
-	TransactionList getMostRecentTransactions(const int&) const;
+	//Q3c
+	TransactionList getTransactionsUpToDate(const Date&) const;
+
 
 	//Mutators
 	void   addNewTransaction(const Transaction&);

@@ -140,6 +140,24 @@ double UserInterface::readInDepositAmount() const {
 	return (readInPositiveAmount());
 }
 
+Date UserInterface::readInValidDate(Date cd) const
+{
+	outputLine("PLEASE INPUT A DATE (DD/MM/YYYY): ");
+	Date aDate;
+	cin >> aDate;
+
+	//If an incorrect date is inputted
+	if (!aDate.isValid(cd))
+	{
+		//Loop again
+		cout << "ERROR: ";
+		readInValidDate(cd);
+	}
+
+	//else return date
+	return aDate;
+}
+
 
 //output functions
 
@@ -258,6 +276,8 @@ void UserInterface::readInDate(int& day, int& month, int&year) const
 	cin >> year;
 }
 
+
+
 //3b
 int UserInterface::readInSearchCommand() const
 {
@@ -273,6 +293,8 @@ int UserInterface::readInSearchCommand() const
 	return command;
 }
 
+
+
 double UserInterface::readInAmount() const
 {
 	outputLine("INPUT THE AMOUNT TO SEARCH FOR: ");
@@ -281,6 +303,39 @@ double UserInterface::readInAmount() const
 	cin >> amount;
 
 	return amount;
+}
+
+//3c
+void UserInterface::showTransactionsUpToDateOnScreen(bool isEmpty, Date d, int size, string str) const
+{
+	if (isEmpty)
+	{
+		outputLine("NO TRANSACTIONS TO SHOW UP TO " + d.toFormattedString() + ".");
+	}
+	else
+	{
+		//string s = "FOUND " + size. + " TRANSACTIONS UP TO DATE " + d.toFormattedString() + ":"
+		cout << "\n      FOUND " << size << " TRANSACTIONS UP TO DATE " << d.toFormattedString() << ":\n";
+		cout << "\n      " << str;
+	}
+
+
+}
+
+bool UserInterface::readInConfirmDeletion() const
+{
+	bool deletionConfirmed(false);
+
+	outputLine("ARE YOU SURE YOU WANT TO DELETE? (TYPE Y TO CONFIRM): ");
+	char ch;
+	cin >> ch;
+
+	if (toupper(ch) == 'Y')
+		deletionConfirmed = true;
+	else
+		outputLine("DELETION CANCELLED");
+
+	return deletionConfirmed;
 }
 
 void UserInterface::showErrorInvalidCommand() const
@@ -387,6 +442,3 @@ void UserInterface::showMiniStatementOnScreen(const bool& isEmpty, const double&
 		cout << "\n		NO TRANSACTIONS IN BANK ACCOUNT";
 }
 
-void UserInterface::showNoTransactionsOnScreen() const {
-	outputLine("NO TRANSACTIONS IN BANK ACCOUNT");
-}

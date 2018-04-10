@@ -35,6 +35,46 @@ const Date Date::currentDate() {	//returns the current date
 	localtime_s(&t, &now);
 	return Date(t.tm_mday, t.tm_mon + 1,  t.tm_year + 1900);
 }
+bool Date::isValid(Date cd)
+{
+	bool valid(false);
+
+	//If date is greaterthan or equal to creation date and less than or equal to current date
+	if (!((*this) < cd) && !(currentDate() < (*this)))
+	{
+		switch (month_)
+		{
+		//28 days
+		case 2:
+			if ((day_ <= 28) && (day_ >= 1))
+				valid = true;
+			break;
+		//30 days
+		case 4:
+		case 6:
+		case 9:
+		case 11:
+			if ((day_ <= 30) && (day_ >= 1))
+				valid = true;
+			break;
+		//31 days
+		case 1:
+		case 3:
+		case 5:
+		case 7:
+		case 8:
+		case 10:
+		case 12:
+			if ((day_ <= 31) && (day_ >= 1))
+				valid = true;
+			break;
+		default:
+			break;
+		}	
+	}
+
+	return valid;
+}
 void Date::setDate(int d, int m, int y) {
 	day_ = d;
 	month_ = m;
@@ -82,6 +122,12 @@ bool Date::operator<(const Date& d) const { //NEW
 	return ((year_ < d.year_)
 	     || ((year_ == d.year_) && (month_ < d.month_) )
 	     || ((year_ == d.year_) && (month_ == d.month_) && (day_ < d.day_)));
+}
+
+bool Date::operator>(const Date& d) const { //NEW
+											//true if (strictly) earlier than d (i.e., *this < d)
+	return (d < (*this));
+
 }
 
 //---------------------------------------------------------------------------
