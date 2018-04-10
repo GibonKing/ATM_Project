@@ -53,7 +53,7 @@ public:
 	void showWithdrawalOnScreen(bool auth, double withdrawal) const;
 	void showStatementOnScreen(const string&) const;
 	void showAllDepositsOnScreen(const bool&, const string&, const double&) const;
-	
+
 	//3b
 	void showNoTransactionsOnScreen() const;
 	void showSearchMenu() const;
@@ -65,7 +65,7 @@ public:
 	//3c
 	void showTransactionsUpToDateOnScreen(bool, Date, int, string) const;
 	bool readInConfirmDeletion() const;
-
+	void showDeletionOfTransactionsUpToDateOnScreen(int n, Date d, bool deletionConfirmed) const;
 
 	template <class T>
 	void showMatchingTransactionsOnScreen(const T& criteria, const int& size, const string& message) const

@@ -332,10 +332,16 @@ bool UserInterface::readInConfirmDeletion() const
 
 	if (toupper(ch) == 'Y')
 		deletionConfirmed = true;
-	else
-		outputLine("DELETION CANCELLED");
 
 	return deletionConfirmed;
+}
+
+void UserInterface::showDeletionOfTransactionsUpToDateOnScreen(int n, Date d, bool deletionConfirmed) const
+{
+	if (deletionConfirmed)
+		cout << "\n      THE " << n << " TRANSACTIONS IN BANK ACCOUNT UP TO DATE " << d.toFormattedString() << " HAVE BEEN DELETED.";
+	else
+		outputLine("DELETION CANCELLED");
 }
 
 void UserInterface::showErrorInvalidCommand() const
@@ -410,11 +416,16 @@ void UserInterface::showNoTransactionsOnScreen() const
 
 void UserInterface::showSearchMenu() const
 {
-	outputHeader("SEARCH MENU");
-	outputLine(" 0                     Search By Amount ");
-	outputLine(" 1                      Search By Title ");
-	outputLine(" 2                       Search By Date ");
-	outputLine(" 3                                 Exit ");
+	outputHeader("SEARCH MENU");
+
+	outputLine(" 0                     Search By Amount ");
+
+	outputLine(" 1                      Search By Title ");
+
+	outputLine(" 2                       Search By Date ");
+
+	outputLine(" 3                                 Exit ");
+
 	outputLine("----------------------------------------");
 }
 

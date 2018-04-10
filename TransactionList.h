@@ -34,7 +34,7 @@ public:
 
 	//Q3c
 	TransactionList getTransactionsUpToDate(const Date&) const;
-
+	void deleteTransactionsUpToDate(const Date&);
 
 	//Mutators
 	void   addNewTransaction(const Transaction&);

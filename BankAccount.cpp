@@ -166,8 +166,7 @@ void BankAccount::produceTransactionsUpToDate(const Date& d, int& n, string& str
 
 void BankAccount::recordDeletionOfTransactionUpToDate(const Date & d)
 {
-	Transaction aTransaction("delete_from_ATM", 1);
-
+	transactions_.deleteTransactionsUpToDate(d);
 }
 
 

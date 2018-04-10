@@ -146,6 +146,24 @@ TransactionList TransactionList::getTransactionsUpToDate(const Date& d) const
 	return trReturn;
 }
 
+void TransactionList::deleteTransactionsUpToDate(const Date& d)
+{
+
+	int numToDelete = getTransactionsUpToDate(d).size();
+	int numToAdd = size() - numToDelete;
+
+	TransactionList tempList;
+	TransactionList copyOfList = (*this);
+	for (int i(0); i < numToAdd; i++)
+	{
+		tempList.addNewTransaction(copyOfList.newestTransaction());
+		copyOfList.deleteFirstTransaction();
+	}
+
+	listOfTransactions_ = tempList.getTransactionList();
+
+}
+
 
 //____other public member functions
 

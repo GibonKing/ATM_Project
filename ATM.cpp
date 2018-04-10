@@ -274,6 +274,8 @@ void ATM::m_acct8_clearAllTransactionsUpToDate()
 
 		if (deletionConfirmed)
 			p_theActiveAccount_->recordDeletionOfTransactionUpToDate(d);
+
+		theUI_.showDeletionOfTransactionsUpToDateOnScreen(n, d, deletionConfirmed);
 	}
 }
 
