@@ -140,6 +140,24 @@ double UserInterface::readInDepositAmount() const {
 	return (readInPositiveAmount());
 }
 
+Date UserInterface::readInValidDate(Date cd) const
+{
+	outputLine("PLEASE INPUT A DATE (DD/MM/YYYY): ");
+	Date aDate;
+	cin >> aDate;
+
+	//If an incorrect date is inputted
+	if (!aDate.isValid(cd))
+	{
+		//Loop again
+		cout << "ERROR: ";
+		readInValidDate(cd);
+	}
+
+	//else return date
+	return aDate;
+}
+
 
 //output functions
 
@@ -214,6 +232,118 @@ int UserInterface::readInCommand() const
 	return com;
 }
 
+string UserInterface::readInString() const
+{
+	cout << "\n";
+	outputLine("ENTER YOUR SEARCH CRITERIA: ");
+	string str;
+	cin >> str;
+	return str;
+}
+
+void UserInterface::readInDate(int& day, int& month, int&year) const
+{
+	//int day, month, year;
+
+	//Get a valid day
+	cout << "\n";
+	outputLine("ENTER THE DAY TO SEARCH (1 - 31): ");
+
+	cin >> day;
+
+	while (day < 1 || day > 31)
+	{
+		outputLine("INVALID DAY, TRY AGAIN: ");
+		cin >> day;
+	}
+
+	//Get a valid month
+	cout << "\n";
+	outputLine("ENTER THE MONTH TO SEARCH (1 - 12): ");
+
+	cin >> month;
+
+	while (month < 1 || month > 12)
+	{
+		outputLine("INVALID MONTH, TRY AGAIN: ");
+		cin >> month;
+	}
+
+	//Get a valid Year
+	cout << "\n";
+	outputLine("ENTER THE YEAR TO SEARCH: ");
+
+	cin >> year;
+}
+
+
+
+//3b
+int UserInterface::readInSearchCommand() const
+{
+	int command = readInCommand();
+
+	//If command is not valid
+	while (command > 3 || command < 0)
+	{
+		showErrorInvalidCommand();
+		command = readInCommand();
+	}
+
+	return command;
+}
+
+
+
+double UserInterface::readInAmount() const
+{
+	outputLine("INPUT THE AMOUNT TO SEARCH FOR: ");
+
+	double amount;
+	cin >> amount;
+
+	return amount;
+}
+
+//3c
+void UserInterface::showTransactionsUpToDateOnScreen(bool isEmpty, Date d, int size, string str) const
+{
+	if (isEmpty)
+	{
+		outputLine("NO TRANSACTIONS TO SHOW UP TO " + d.toFormattedString() + ".");
+	}
+	else
+	{
+		//string s = "FOUND " + size. + " TRANSACTIONS UP TO DATE " + d.toFormattedString() + ":"
+		cout << "\n      FOUND " << size << " TRANSACTIONS UP TO DATE " << d.toFormattedString() << ":\n";
+		cout << "\n      " << str;
+	}
+
+
+}
+
+bool UserInterface::readInConfirmDeletion() const
+{
+	bool deletionConfirmed(false);
+
+	outputLine("ARE YOU SURE YOU WANT TO DELETE? (TYPE Y TO CONFIRM): ");
+	char ch;
+	cin >> ch;
+
+	if (toupper(ch) == 'Y')
+		deletionConfirmed = true;
+
+	return deletionConfirmed;
+}
+
+void UserInterface::showDeletionOfTransactionsUpToDateOnScreen(int n, Date d, bool deletionConfirmed) const
+{
+	if (deletionConfirmed)
+		cout << "\n      THE " << n << " TRANSACTIONS IN BANK ACCOUNT UP TO DATE " << d.toFormattedString() << " HAVE BEEN DELETED.";
+	else
+		outputLine("DELETION CANCELLED");
+}
+
 void UserInterface::showErrorInvalidCommand() const
 {
 	outputLine("INVALID COMMAND CHOICE, TRY AGAIN");
@@ -231,6 +361,21 @@ double UserInterface::readInPositiveAmount() const
 	}
 
 	return amount;
+}
+
+int UserInterface::readInPositiveNumber() const
+{
+	int amount;
+	cin >> amount;
+
+	while (amount <= 0)
+	{
+		outputLine("INVALID NUMBER OF TRANSACTIONS, TRY AGAIN: ");
+		cin >> amount;
+	}
+
+	return amount;
+
 }
 
 void UserInterface::outputHeader(const string& header) const
@@ -258,3 +403,53 @@ void UserInterface::outputLine(const string& text) const
 {
 	cout << "\n      " << text;
 }
+int UserInterface::readInNumberOfTransactions() const{
+	//ask for the number of transactions to be retrieved
+	outputLine("NUMBER OF TRANSACTIONS TO SHOW: ");
+	return (readInPositiveNumber());
+}
+
+void UserInterface::showNoTransactionsOnScreen() const
+{
+	outputLine("NO TRANSACTIONS IN BANK ACCOUNT");
+}
+
+void UserInterface::showSearchMenu() const
+{
+	outputHeader("SEARCH MENU");
+
+	outputLine(" 0                     Search By Amount ");
+
+	outputLine(" 1                      Search By Title ");
+
+	outputLine(" 2                       Search By Date ");
+
+	outputLine(" 3                                 Exit ");
+
+	outputLine("----------------------------------------");
+}
+
+//void UserInterface::showMatchingTransactionsOnScreen(const int& amount, const int& size, const string& message) const
+//{
+//	
+//	outputHeader("SEARCH RESULTS");
+//	cout << "\n THERE ARE " << size << " TRANSACTIONS IN BANK ACCOUNT MATCHING SEARCH CRITERIA "<< char(156) << amount;
+//	
+//	cout << "\n		 " << message;
+//
+//
+//}
+
+
+void UserInterface::showMiniStatementOnScreen(const bool& isEmpty, const double& total, const string& miniStatement) const
+{
+	if (!isEmpty)
+	{
+		cout << "\n		RECENT TRANSACTIONS REQUESTED AT time ON date";
+		cout << miniStatement;
+		cout << "\n		CUMULATIVE AMOUNT OF TRANSACTIONS: \234" << total;
+	}
+	else
+		cout << "\n		NO TRANSACTIONS IN BANK ACCOUNT";
+}
+

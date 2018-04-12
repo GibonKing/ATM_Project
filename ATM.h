@@ -35,15 +35,27 @@ private:
 	void executeCardCommand(int);
 	int  validateAccount(const string&) const;
 	void executeAccountCommand();
+
+	//Search functions
+	void searchTransactions();
  
 	//card menu commands
 	void m_card1_manageIndividualAccount();
+
 	//account menu commands
     void m_acct1_produceBalance() const;
     void m_acct2_withdrawFromBankAccount();
     void m_acct3_depositToBankAccount();
     void m_acct4_produceStatement() const;
 	void m_acct5_showAllDepositsTransactions() const;
+	void m_acct6_showMiniStatement() const;
+	void m_acct7_searchForTransactions();
+	void m_acct8_clearAllTransactionsUpToDate();
+
+	//Search Menu Commands (3b)
+	void m_trl_showTransactionsForAmount() const;
+	void sm2_showTransactionsForTitle() const;
+	void sm3_showTransactionsForDate() const;
 
     //support file handling functions and creation of dynamic objects
     bool canOpenFile(const string&) const;

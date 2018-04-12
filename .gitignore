@@ -30,8 +30,39 @@
 *.exe
 *.out
 *.app
+
+*.ipch
+
 \.vs/OOP Project/v15/ipch/AutoPCH/a9fa9fba67d2dd1a/__TASK1C_MAIN\.ipch
 
 \.vs/OOP Project/v15/\.suo
 
 \.vs/OOP Project/v15/Browse\.VC\.db
+
+\.vs/OOP Project/v15/Browse\.VC\.opendb
+
+\.vs/OOP Project/v15/ipch/AutoPCH/73574783b2597781/ATM\.ipch
+
+x64/Debug/OOP Project\.ilk
+
+x64/Debug/OOP Project\.log
+
+x64/Debug/OOP Project\.pdb
+
+x64/Debug/OOP Project\.tlog/CL\.command\.1\.tlog
+
+x64/Debug/OOP Project\.tlog/CL\.read\.1\.tlog
+
+x64/Debug/OOP Project\.tlog/CL\.write\.1\.tlog
+
+x64/Debug/OOP Project\.tlog/link\.command\.1\.tlog
+
+x64/Debug/OOP Project\.tlog/link\.read\.1\.tlog
+
+x64/Debug/OOP Project\.tlog/link\.write\.1\.tlog
+
+x64/Debug/OOP Project\.tlog/OOP Project\.lastbuildstate
+
+x64/Debug/vc141\.idb
+
+x64/Debug/vc141\.pdb

@@ -26,6 +26,7 @@ public:
 	int getYear() const;				//return a data member value, year_
 	void setDate(int, int, int);		//set new values for date
     static const Date currentDate() ;   //return the current date
+	bool isValid(Date cd);
 
 	string toFormattedString() const ;				//return date as formatted string ("DD/MM/YYYY")
 
@@ -35,7 +36,7 @@ public:
 	bool operator==(const Date& d) const;  	//true if (*this == d)
 	bool operator!=(const Date& d) const;  	//true if (*this != d)
 	bool operator<(const Date& d) const;		//true if (*this < d)  (strictly earlier)
-
+	bool operator>(const Date& d) const;		//true if (*this < d)  (strictly earlier)
 private:
 	int day_;
 	int month_;

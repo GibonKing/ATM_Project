@@ -17,14 +17,153 @@
 
 //Getters
 
-double TransactionList::getTotalTransactions() const {
+double TransactionList::getTotalNumberTransactions() const {
 	return size();
+}
+
+double TransactionList::getTotalTransactions() const
+{
+	double cumulativeTotal(0);
+	const int count = size();
+	List<Transaction> trl = getTransactionList();
+
+	for (int i = 0; i < count; i++)
+	{
+		cumulativeTotal = cumulativeTotal + trl.first().getAmount();
+		trl = trl.tail();
+	}
+	return cumulativeTotal;
 }
 
 List<Transaction> TransactionList::getTransactionList() const
 {
 	return listOfTransactions_;
 }
+
+TransactionList TransactionList::getMostRecentTransactions(const int& noOfTransactions) const
+{
+	List<Transaction> trl = listOfTransactions_;
+	TransactionList trlRecent;
+	for (int i = 0; i < noOfTransactions; i++)
+	{
+		trlRecent.addNewTransaction(trl.first());
+		trl = trl.tail();
+	}
+	return trlRecent;
+}
+
+TransactionList TransactionList::getTransactionsForAmount(const double& a) const
+{
+	//Copy of list
+	List<Transaction> trlist = listOfTransactions_;
+	TransactionList trReturn;
+	//For every item in the list (Most recent first)
+	for (int i(0); i < listOfTransactions_.length(); i++)
+	{
+		//If first item in list is correct value
+		if (trlist.first().getAmount() == a)
+		{
+			//Add it to temporary transaction list
+			trReturn.addNewTransaction(trlist.first());
+		}
+		//Go to next transaction
+		trlist = trlist.tail();
+	}
+
+	//Return ammended transaction list
+	return trReturn;
+}
+
+TransactionList TransactionList::getTransactionsForTitle(const string& t) const
+{
+	//Copy of list
+	List<Transaction> trlist = listOfTransactions_;
+	TransactionList trReturn;
+
+	//For every item in the list (Most recent first)
+	for (int i(0); i < listOfTransactions_.length(); i++)
+	{
+		//If first item in list is correct value
+		if (trlist.first().getTitle() == t)
+		{
+			//Add it to temporary transaction list
+			trReturn.addNewTransaction(trlist.first());
+		}
+		//Go to next transaction
+		trlist = trlist.tail();
+	}
+	
+	//Return ammended transaction list
+	return trReturn;
+}
+
+TransactionList TransactionList::getTransactionsForDate(const Date& d) const
+{
+	//Copy of list
+	List<Transaction> trlist = listOfTransactions_;
+	TransactionList trReturn;
+
+	//For every item in the list (Most recent first)
+	for (int i(0); i < listOfTransactions_.length(); i++)
+	{
+		//If first item in list is correct value
+		if (trlist.first().getDate() == d)
+		{
+			//Add it to temporary transaction list
+			trReturn.addNewTransaction(trlist.first());
+		}
+		//Go to next transaction
+		trlist = trlist.tail();
+	}
+
+	//Return ammended transaction list
+	return trReturn;
+}
+
+TransactionList TransactionList::getTransactionsUpToDate(const Date& d) const
+{
+
+	//ADD RECURSION TO ALL GET TRANSACTIONS
+
+	//Copy of list
+	List<Transaction> trlist = listOfTransactions_;
+	TransactionList trReturn;
+
+	//For every item in the list (Most recent first)
+	for (int i(0); i < listOfTransactions_.length(); i++)
+	{
+		//If first date in list is less than or equal to given date
+		if (!(trlist.first().getDate() > d))
+		{
+			//Add it to temporary transaction list
+			trReturn.addNewTransaction(trlist.first());
+		}
+		//Go to next transaction
+		trlist = trlist.tail();
+	}
+
+	//Return ammended transaction list
+	return trReturn;
+}
+
+void TransactionList::deleteTransactionsUpToDate(const Date& d)
+{
+
+	int numToDelete = getTransactionsUpToDate(d).size();
+	int numToAdd = size() - numToDelete;
+
+	TransactionList tempList;
+	TransactionList copyOfList = (*this);
+	for (int i(0); i < numToAdd; i++)
+	{
+		tempList.addNewTransaction(copyOfList.newestTransaction());
+		copyOfList.deleteFirstTransaction();
+	}
+
+	listOfTransactions_ = tempList.getTransactionList();
+
+}
+
 
 //____other public member functions
 
