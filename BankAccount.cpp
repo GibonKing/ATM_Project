@@ -169,6 +169,32 @@ void BankAccount::recordDeletionOfTransactionUpToDate(const Date & d)
 	transactions_.deleteTransactionsUpToDate(d);
 }
 
+bool BankAccount::canTransferOut(const double& amt)
+{
+	return canWithdraw(amt);
+}
+
+bool BankAccount::canTransferIn(const double &)
+{
+	//SOME CASE HERE
+	return true;
+}
+
+void BankAccount::recordTransferOut(const double & transferAmount, const string & accNum)
+{
+	Transaction t("transfer_out_to_acc_" + accNum, -transferAmount);
+	transactions_.addNewTransaction(t);
+	updateBalance(-transferAmount);
+
+}
+
+void BankAccount::recordTransferIn(const double & transferAmount, const string & accNum)
+{
+	Transaction t("transfer_in_to_acc_" + accNum, transferAmount);
+	transactions_.addNewTransaction(t);
+	updateBalance(transferAmount);
+}
+
 
 
 

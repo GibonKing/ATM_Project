@@ -67,6 +67,12 @@ public:
 	bool readInConfirmDeletion() const;
 	void showDeletionOfTransactionsUpToDateOnScreen(int n, Date d, bool deletionConfirmed) const;
 
+	//3d
+	void showCardOnScreen(const string&) const;
+	double readInTransferAmount() const;
+	void showTransferOnScreen(const bool& trOutOk, const bool& trInOk, const double& transferAmount) const;
+	
+	
 	template <class T>
 	void showMatchingTransactionsOnScreen(const T& criteria, const int& size, const string& message) const
 	{

@@ -59,6 +59,12 @@ public:
 	void produceTransactionsUpToDate(const Date&, int&, string&);
 	void recordDeletionOfTransactionUpToDate(const Date& d);
 
+	//Q3d
+	bool canTransferOut(const double&); 
+	bool canTransferIn(const double&);
+	void recordTransferOut(const double& transferAmount, const string& accNum);
+	void recordTransferIn(const double& transferAmount, const string& accNum);
+
 
 	//functions to put data into and get data from streams
 	ostream& putDataInStream(ostream& os) const;

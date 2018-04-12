@@ -343,6 +343,40 @@ void UserInterface::showDeletionOfTransactionsUpToDateOnScreen(int n, Date d, bo
 	else
 		outputLine("DELETION CANCELLED");
 }
+//3d
+void UserInterface::showCardOnScreen(const string& cards) const
+{
+	outputLine(cards);
+}
+
+double UserInterface::readInTransferAmount() const
+{
+	outputLine("ENTER A POSITIVE AMOUNT TO TRANSFER: ");
+	double amt;
+	cin >> amt;
+
+	while (amt <= 0)
+	{
+		outputLine("ERROR: POSITIVE VALUES ONLY, RETRY: ");
+		cin >> amt;
+	}
+
+	return amt;
+}
+
+void UserInterface::showTransferOnScreen(const bool & trOutOk, const bool & trInOk, const double & transferAmount) const
+{
+
+	if (!trOutOk || !trInOk)
+	{
+		outputLine("CANNOT TRANSFER MONEY TO ACCOUNT");
+	}
+	else
+	{
+		outputLine("Transferred ");
+		//ADD STUFF
+	}
+}
 
 void UserInterface::showErrorInvalidCommand() const
 {

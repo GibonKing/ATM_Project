@@ -152,6 +152,9 @@ void ATM::executeAccountCommand() {
 				case 8:
 					m_acct8_clearAllTransactionsUpToDate();
 					break;
+				case 9:
+					m_acct9_transferCashToAnotherAccount();
+					break;
 				default:theUI_.showErrorInvalidCommand();
 			}
 			theUI_.wait();
@@ -279,6 +282,29 @@ void ATM::m_acct8_clearAllTransactionsUpToDate()
 	}
 }
 
+void ATM::m_acct9_transferCashToAnotherAccount()
+{
+	string card = p_theCard_->toFormattedString();
+	theUI_.showCardOnScreen(card);
+
+	string processAccount = theUI_.readInAccountToBeProcessed();
+	string fileName = theUI_.accountFilename(processAccount);
+
+	char validAccountCode = validateAccount(fileName);
+
+	theUI_.showValidateAccountOnScreen(validAccountCode, processAccount);
+
+
+	if (validAccountCode == 0)
+	{
+		BankAccount* transferAccount = activateAccount(fileName);
+		
+		attemptTransfer(transferAccount);
+	
+		releaseAccount(transferAccount, fileName);
+	}
+
+}
 //------search menu options
 void ATM::m_trl_showTransactionsForAmount() const
 {
@@ -314,6 +340,30 @@ void ATM::sm3_showTransactionsForDate() const
 	p_theActiveAccount_->produceTransactionsForDate(d, n, str);
 
 	theUI_.showMatchingTransactionsOnScreen(d, n, str);
+}
+
+void ATM::attemptTransfer(BankAccount* ba) const
+{
+	double transferAmount = theUI_.readInTransferAmount();
+	bool trOutOk = p_theActiveAccount_->canTransferOut(transferAmount);
+	bool trInOk = ba->canTransferIn(transferAmount); //WILL CHANGE PER ACCOUNT
+
+	if (trOutOk && trInOk)
+	{
+		recordTransfer(transferAmount, ba);
+		theUI_.showTransferOnScreen(trOutOk, trInOk, transferAmount);
+	}
+}
+
+void ATM::recordTransfer(double transferAmount, BankAccount* ba) const
+{
+	string tAN = ba->getAccountNumber(); 
+	string aAN = p_theActiveAccount_->getAccountNumber();
+
+	p_theActiveAccount_->recordTransferOut(transferAmount, tAN);
+	ba->recordTransferIn(transferAmount, aAN);
+
+
 }
 
 //------Search Functions
