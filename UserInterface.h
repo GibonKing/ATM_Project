@@ -18,6 +18,7 @@
 #include <sstream>
 #include <string>
 #include "Date.h"
+#include "Time.h"
 
 using namespace std;
 

@@ -414,6 +414,7 @@ void UserInterface::outputLine(const string& text) const
 {
 	cout << "\n      " << text;
 }
+
 int UserInterface::readInNumberOfTransactions() const{
 	//ask for the number of transactions to be retrieved
 	outputLine("NUMBER OF TRANSACTIONS TO SHOW: ");
@@ -456,7 +457,9 @@ void UserInterface::showMiniStatementOnScreen(const bool& isEmpty, const double&
 {
 	if (!isEmpty)
 	{
-		cout << "\n		RECENT TRANSACTIONS REQUESTED AT time ON date";
+		Date date;
+		Time time;
+		cout << "\n		RECENT TRANSACTIONS REQUESTED AT " << time.currentTime() << " ON " << date.currentDate();
 		cout << miniStatement;
 		cout << "\n		CUMULATIVE AMOUNT OF TRANSACTIONS: \234" << total;
 	}
