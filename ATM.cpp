@@ -104,20 +104,22 @@ void ATM::m_card1_showFundsAvailableOnAllAccounts()
 {
 	assert(p_theCard_ != nullptr);
 	List<string> accts = p_theCard_->getAccountsList();
-
 	bool empty = accts.isEmpty();
+	bool empty2 = empty;
 	double maxBorrowable(0.0);
 	string accountDetails("");
 
-	while (!empty)
+	while (!empty2)
 	{
-		BankAccount* p_acct = activateAccount(accts.first());
+		BankAccount* p_acct = activateAccount(theUI_.accountFilename(accts.first()));
 		maxBorrowable += p_acct->maxBorrowable();
 		accountDetails += p_acct->prepareFormattedAccountDetails();
 		releaseAccount(p_acct, "account_"+ (p_acct->getAccountNumber()));
 		accts.deleteFirst();
+
+		empty2 = accts.isEmpty();
 	}
-	theUI_.showFundsAvailableOnScreen();
+	theUI_.showFundsAvailableOnScreen(empty, accountDetails, maxBorrowable);
 
 }
 int ATM::validateAccount(const string& filename) const {
