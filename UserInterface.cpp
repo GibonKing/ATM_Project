@@ -212,6 +212,17 @@ void UserInterface::showAllDepositsOnScreen(const bool& noTransaction, const str
 	}
 }
 
+void UserInterface::showFundsAvailableOnScreen(const bool& empty, const string& details, const double& funds) const
+{
+	if (empty)
+		outputLine("NO ACCOUNT ACCESSIBLE WITH THIS CARD!");
+	else
+	{
+		cout << "\n      There are : " << funds << "available accross all cards";
+		outputLine(details);
+	}
+}
+
 //---------------------------------------------------------------------------
 // private support member functions
 //---------------------------------------------------------------------------
