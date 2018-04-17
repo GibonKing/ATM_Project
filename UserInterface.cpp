@@ -218,7 +218,7 @@ void UserInterface::showFundsAvailableOnScreen(const bool& empty, const string& 
 		outputLine("NO ACCOUNT ACCESSIBLE WITH THIS CARD!");
 	else
 	{
-		cout << "\n      There are : " << funds << "available accross all cards";
+		cout << "\n      THERE ARE: \234" << fixed << setprecision(2) << funds << " AVAILABLE ACROSS ALL CARDS";
 		outputLine(details);
 	}
 }
