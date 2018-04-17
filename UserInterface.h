@@ -62,7 +62,6 @@ public:
 	int readInSearchCommand() const;
 	double readInAmount() const;
 	string readInString() const;
-	void readInDate(int&, int&, int&) const;
 
 	//3c
 	void showTransactionsUpToDateOnScreen(bool, Date, int, string) const;

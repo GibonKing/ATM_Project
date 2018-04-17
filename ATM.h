@@ -54,8 +54,8 @@ private:
 
 	//Search Menu Commands (3b)
 	void m_trl_showTransactionsForAmount() const;
-	void sm2_showTransactionsForTitle() const;
-	void sm3_showTransactionsForDate() const;
+	void m_trl_showTransactionsForTitle() const;
+	void m_trl_showTransactionsForDate() const;
 
     //support file handling functions and creation of dynamic objects
     bool canOpenFile(const string&) const;

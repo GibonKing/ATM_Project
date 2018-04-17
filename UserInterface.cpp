@@ -44,11 +44,11 @@ int UserInterface::showAccountMenuAndGetCommand(const string& accNum) const
 	outputLine(" 2                Withdraw from account ");
 	outputLine(" 3                 Deposit into account ");
 	outputLine(" 4                       Show statement ");
-	outputLine(" 5                    Show all deposits  // TO BE IMPLEMENTED FOR Task 1c Preparation");
-	outputLine(" 6                  Show mini statement  // TO BE IMPLEMENTED FOR Task 1c");
-	outputLine(" 7                  Search Transactions  // TO BE IMPLEMENTED FOR Task 1c");
-	outputLine(" 8    Clear all transactions up to date  // TO BE IMPLEMENTED FOR Task 1c");
-	outputLine(" 9          Transfer to another account  // TO BE IMPLEMENTED FOR Task 1c");
+	outputLine(" 5                    Show all deposits ");
+	outputLine(" 6                  Show mini statement ");
+	outputLine(" 7                  Search Transactions ");
+	outputLine(" 8    Clear all transactions up to date ");
+	outputLine(" 9          Transfer to another account ");
 	outputLine("----------------------------------------");
 	return (readInCommand());
 }
@@ -252,42 +252,6 @@ string UserInterface::readInString() const
 	return str;
 }
 
-void UserInterface::readInDate(int& day, int& month, int&year) const
-{
-	//int day, month, year;
-
-	//Get a valid day
-	cout << "\n";
-	outputLine("ENTER THE DAY TO SEARCH (1 - 31): ");
-
-	cin >> day;
-
-	while (day < 1 || day > 31)
-	{
-		outputLine("INVALID DAY, TRY AGAIN: ");
-		cin >> day;
-	}
-
-	//Get a valid month
-	cout << "\n";
-	outputLine("ENTER THE MONTH TO SEARCH (1 - 12): ");
-
-	cin >> month;
-
-	while (month < 1 || month > 12)
-	{
-		outputLine("INVALID MONTH, TRY AGAIN: ");
-		cin >> month;
-	}
-
-	//Get a valid Year
-	cout << "\n";
-	outputLine("ENTER THE YEAR TO SEARCH: ");
-
-	cin >> year;
-}
-
-
 
 //3b
 int UserInterface::readInSearchCommand() const
@@ -304,8 +268,6 @@ int UserInterface::readInSearchCommand() const
 	return command;
 }
 
-
-
 double UserInterface::readInAmount() const
 {
 	outputLine("INPUT THE AMOUNT TO SEARCH FOR: ");
@@ -315,6 +277,7 @@ double UserInterface::readInAmount() const
 
 	return amount;
 }
+
 
 //3c
 void UserInterface::showTransactionsUpToDateOnScreen(bool isEmpty, Date d, int size, string str) const

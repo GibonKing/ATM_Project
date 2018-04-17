@@ -314,7 +314,7 @@ void ATM::m_trl_showTransactionsForAmount() const
 	theUI_.showMatchingTransactionsOnScreen(a, n, str);
 }
 
-void ATM::sm2_showTransactionsForTitle() const
+void ATM::m_trl_showTransactionsForTitle() const
 {
 	//Get a string
 	string t = theUI_.readInString();
@@ -325,12 +325,9 @@ void ATM::sm2_showTransactionsForTitle() const
 	theUI_.showMatchingTransactionsOnScreen(t, n, str);
 }
 
-void ATM::sm3_showTransactionsForDate() const
+void ATM::m_trl_showTransactionsForDate() const
 {
-	//zerostring test maybe
-	int day, month, year;
-	theUI_.readInDate(day, month, year);
-	Date d(day, month, year);
+	Date d = theUI_.readInValidDate(p_theActiveAccount_->getCreationDate());
 
 	int n;
 	string str;
@@ -355,10 +352,10 @@ void ATM::searchTransactions()
 		m_trl_showTransactionsForAmount();
 		break;
 	case 1:
-		sm2_showTransactionsForTitle();
+		m_trl_showTransactionsForTitle();
 		break;
 	case 2:
-		sm3_showTransactionsForDate();
+		m_trl_showTransactionsForDate();
 		break;
 	default:
 		break;
