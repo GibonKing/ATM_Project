@@ -110,7 +110,7 @@ TransactionList TransactionList::getTransactionsForDate(const Date& d) const
 		if (trlist.first().getDate() == d)
 		{
 			//Add it to temporary transaction list
-			trReturn.addNewTransaction(trlist.first());
+			trReturn.addNewTransactionEnd(trlist.first());
 		}
 		//Go to next transaction
 		trlist = trlist.tail();
@@ -136,7 +136,7 @@ TransactionList TransactionList::getTransactionsUpToDate(const Date& d) const
 		if (!(trlist.first().getDate() > d))
 		{
 			//Add it to temporary transaction list
-			trReturn.addNewTransaction(trlist.first());
+			trReturn.addNewTransactionEnd(trlist.first());
 		}
 		//Go to next transaction
 		trlist = trlist.tail();
@@ -169,6 +169,9 @@ void TransactionList::deleteTransactionsUpToDate(const Date& d)
 
 void TransactionList::addNewTransaction(const Transaction& tr) {
     listOfTransactions_.addInFront(tr);
+}
+void TransactionList::addNewTransactionEnd(const Transaction& tr) {
+	listOfTransactions_.addAtEnd(tr);
 }
 const Transaction TransactionList::newestTransaction() const {
     return (listOfTransactions_.first());

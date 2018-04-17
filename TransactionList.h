@@ -38,6 +38,7 @@ public:
 
 	//Mutators
 	void   addNewTransaction(const Transaction&);
+	void   addNewTransactionEnd(const Transaction&);
     const Transaction newestTransaction() const;
     const  TransactionList olderTransactions() const;
     void   deleteFirstTransaction();

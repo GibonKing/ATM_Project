@@ -60,9 +60,9 @@ public:
 	List<ITEM>& operator =(const List<ITEM>&);	//copy assignment operator
 	bool operator ==(const List<ITEM>&) const; //compare with content of another list
 	bool  isEmpty() const;			//check if list is empty
-	const ITEM  first() const;			//return first item (MUST be non-empty)
-	const ITEM  last() const;				//return last item (MUST be non-empty)
-	const List<ITEM> tail() const;		//return tail (MUST be non-empty)
+	const ITEM  first() const;		//return first item (MUST be non-empty)
+	const ITEM  last() const;		//return last item (MUST be non-empty)
+	const List<ITEM> tail() const;	//return tail (MUST be non-empty)
 	void  addInFront(const ITEM&);	//insert an item in front
 	void  addAtEnd(const ITEM&);	//insert an item at end
 	void  deleteFirst();			//delete first item (MUST be non-empty)

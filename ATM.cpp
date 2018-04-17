@@ -273,6 +273,7 @@ void ATM::m_acct7_searchForTransactions()
 
 }
 
+//--option 8
 void ATM::m_acct8_clearAllTransactionsUpToDate()
 {
 	assert(p_theActiveAccount_ != nullptr);
@@ -291,7 +292,7 @@ void ATM::m_acct8_clearAllTransactionsUpToDate()
 
 	theUI_.showTransactionsUpToDateOnScreen(isEmpty, d, n, str);
 
-	if (!isEmpty && str != "")
+	if (!isEmpty && str.length() != 0)
 	{
 		bool deletionConfirmed = theUI_.readInConfirmDeletion();
 
