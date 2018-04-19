@@ -18,6 +18,7 @@
 #include <sstream>
 #include <string>
 #include "Date.h"
+#include "Time.h"
 
 using namespace std;
 
@@ -53,6 +54,7 @@ public:
 	void showWithdrawalOnScreen(bool auth, double withdrawal) const;
 	void showStatementOnScreen(const string&) const;
 	void showAllDepositsOnScreen(const bool&, const string&, const double&) const;
+	void showFundsAvailableOnScreen(const bool&, const string&, const double&) const;
 
 	//3b
 	void showNoTransactionsOnScreen() const;
@@ -60,7 +62,6 @@ public:
 	int readInSearchCommand() const;
 	double readInAmount() const;
 	string readInString() const;
-	void readInDate(int&, int&, int&) const;
 
 	//3c
 	void showTransactionsUpToDateOnScreen(bool, Date, int, string) const;

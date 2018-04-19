@@ -64,6 +64,8 @@ void ATM::executeCardCommand(int option) {
 					{
 					case 1: m_card1_manageIndividualAccount();
 						break;
+					case 2: m_card1_showFundsAvailableOnAllAccounts();
+						break;
 						default:
 							theUI_.showErrorInvalidCommand();
 					}
@@ -96,6 +98,27 @@ int ATM::validateCard(const string& filename) const {
 		else
 			//card valid (exists and linked to at least one bank account)
 			return VALID_CARD;
+}
+
+void ATM::m_card1_showFundsAvailableOnAllAccounts()
+{
+	assert(p_theCard_ != nullptr);
+	List<string> accts = p_theCard_->getAccountsList();
+	bool empty = accts.isEmpty();
+	int Length = accts.length();
+	double maxBorrowable(0.0);
+	string accountDetails("");
+
+	for (int i(0); i < Length; i++)
+	{
+		BankAccount* p_acct = activateAccount(theUI_.accountFilename(accts.first()));
+		maxBorrowable += p_acct->maxBorrowable();
+		accountDetails += p_acct->prepareFormattedAccountDetails();
+		releaseAccount(p_acct, "account_"+ (p_acct->getAccountNumber()));
+		accts.deleteFirst();
+	}
+	theUI_.showFundsAvailableOnScreen(empty, accountDetails, maxBorrowable);
+
 }
 int ATM::validateAccount(const string& filename) const {
 	//check that the account is valid 
@@ -253,6 +276,7 @@ void ATM::m_acct7_searchForTransactions()
 
 }
 
+//--option 8
 void ATM::m_acct8_clearAllTransactionsUpToDate()
 {
 	assert(p_theActiveAccount_ != nullptr);
@@ -271,7 +295,7 @@ void ATM::m_acct8_clearAllTransactionsUpToDate()
 
 	theUI_.showTransactionsUpToDateOnScreen(isEmpty, d, n, str);
 
-	if (!isEmpty && str != "")
+	if (!isEmpty && str.length() != 0)
 	{
 		bool deletionConfirmed = theUI_.readInConfirmDeletion();
 
@@ -317,7 +341,7 @@ void ATM::m_trl_showTransactionsForAmount() const
 	theUI_.showMatchingTransactionsOnScreen(a, n, str);
 }
 
-void ATM::sm2_showTransactionsForTitle() const
+void ATM::m_trl_showTransactionsForTitle() const
 {
 	//Get a string
 	string t = theUI_.readInString();
@@ -328,12 +352,9 @@ void ATM::sm2_showTransactionsForTitle() const
 	theUI_.showMatchingTransactionsOnScreen(t, n, str);
 }
 
-void ATM::sm3_showTransactionsForDate() const
+void ATM::m_trl_showTransactionsForDate() const
 {
-	//zerostring test maybe
-	int day, month, year;
-	theUI_.readInDate(day, month, year);
-	Date d(day, month, year);
+	Date d = theUI_.readInValidDate(p_theActiveAccount_->getCreationDate());
 
 	int n;
 	string str;
@@ -382,10 +403,10 @@ void ATM::searchTransactions()
 		m_trl_showTransactionsForAmount();
 		break;
 	case 1:
-		sm2_showTransactionsForTitle();
+		m_trl_showTransactionsForTitle();
 		break;
 	case 2:
-		sm3_showTransactionsForDate();
+		m_trl_showTransactionsForDate();
 		break;
 	default:
 		break;
