@@ -12,6 +12,8 @@
 
 #include "Card.h"
 #include "CurrentAccount.h"
+#include "ChildAccount.h"
+#include "ISAAccount.h"
 #include "UserInterface.h"
 #include <iostream>
 #include <fstream>

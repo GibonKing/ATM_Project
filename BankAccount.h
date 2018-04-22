@@ -30,15 +30,16 @@ public:
     const Date getCreationDate() const;
 	double getBalance() const;
     const TransactionList getAllDepositTransactions() const;
-    bool	isEmptyTransactionList() const;
+    bool isEmptyTransactionList() const;
 
 	//other operations
 	const string prepareFormattedStatement() const;
 
-    void recordDeposit(double amount);
+    virtual void recordDeposit(double amount);
 
 	virtual double maxBorrowable() const;
 	bool canWithdraw(double amount) const;
+	virtual bool canDeposit(const double&) const;
     void recordWithdrawal(double amount);
 
 	void readInBankAccountFromFile(const string& fileName);

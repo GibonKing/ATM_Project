@@ -83,9 +83,18 @@ const string BankAccount::getAccountType(char n) {
 	switch (n)
 	{
 	//case BANKACCOUNT_TYPE:		return "BANK"; 
-	case CURRENTACCOUNT_TYPE:	return "CURRENT"; break;
+	case CURRENTACCOUNT_TYPE:	
+		return "CURRENT";
+		break;
+	case CHILDACCOUNT_TYPE:
+		return "CHILD";
+		break;
+	case ISAACCOUNT_TYPE:
+		return "ISA";
+		break;
 //etc..
-	default:					return "UNKNOWN";
+	default:
+		return "UNKNOWN";
 	}
 }
 
@@ -104,6 +113,10 @@ double BankAccount::maxBorrowable() const {
 bool BankAccount::canWithdraw(double amountToWithdraw) const {
 	//check if enough money in account
 	return amountToWithdraw <= maxBorrowable();
+}
+
+bool BankAccount::canDeposit(const double&) const {
+	return true;
 }
 
 void BankAccount::recordWithdrawal(double amountToWithdraw) {

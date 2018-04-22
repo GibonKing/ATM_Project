@@ -26,7 +26,7 @@ double SavingsAccount::maxBorrowable() const
 	return (getBalance() - getMinimumBalance());
 }
 
-const string SavingsAccount::prepareFormattedAccountDetails()
+const string SavingsAccount::prepareFormattedAccountDetails() const
 {
 	assert(getAccountType(getAccountNumber()[0]) != "UNKOWN");
 	ostringstream os;

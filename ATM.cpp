@@ -211,8 +211,10 @@ void ATM::m_acct2_withdrawFromBankAccount() {
 void ATM::m_acct3_depositToBankAccount() {
 	assert(p_theActiveAccount_ != nullptr);
 	double amountToDeposit(theUI_.readInDepositAmount());
-	p_theActiveAccount_->recordDeposit(amountToDeposit);
-	theUI_.showDepositOnScreen(true, amountToDeposit);
+	bool canDeposit = p_theActiveAccount_->canDeposit(amountToDeposit);
+	if(canDeposit)
+		p_theActiveAccount_->recordDeposit(amountToDeposit);
+	theUI_.showDepositOnScreen(canDeposit, amountToDeposit);
 }
 //---option 4
 void ATM::m_acct4_produceStatement() const {
@@ -467,6 +469,12 @@ BankAccount* ATM::activateAccount(const string& filename) {
 	{
 		case CURRENTACCOUNT_TYPE:	//NOT NEEDED WITH ABSTRACT CLASSES
 			p_BA = new CurrentAccount;    //points to a BankAccount object
+			break;
+		case CHILDACCOUNT_TYPE:
+			p_BA = new ChildAccount;
+			break;
+		case ISAACCOUNT_TYPE:
+			p_BA = new ISAAccount;
 			break;
 	}
 	assert(p_BA != nullptr); //check that the dynamic allocation has succeeded
