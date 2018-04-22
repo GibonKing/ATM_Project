@@ -209,11 +209,12 @@ const string BankAccount::prepareFormattedStatement() const {
 
 const string BankAccount::prepareFormattedMiniAccountDetails() const
 {
+	assert(getAccountType(accountNumber_[0]) != "UNKNOWN");
 	ostringstream os;
 
-	os << prepareFormattedAccountDetails();
-
-	os << prepareFormattedTransactionList();
+	os << "\n      ACCOUNT NUMBER:  " << accountNumber_;
+	os << fixed << setprecision(2) << setfill(' ');
+	os << "\n      BALANCE:         \234" << setw(10) << balance_;
 
 	return os.str();
 }

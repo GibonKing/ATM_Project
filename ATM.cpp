@@ -251,7 +251,7 @@ void ATM::m_acct6_showMiniStatement() const {
 		p_theActiveAccount_->produceNMostRecentTransactions(noOfTransactions, str, total);
 
 	}
-	const string mad = p_theActiveAccount_->prepareFormattedAccountDetails();
+	const string mad = p_theActiveAccount_->prepareFormattedMiniAccountDetails();
 
 	theUI_.showMiniStatementOnScreen(isEmpty, total, mad+str);
 }
