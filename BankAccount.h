@@ -37,7 +37,7 @@ public:
 
     void recordDeposit(double amount);
 
-	double maxBorrowable() const;
+	virtual double maxBorrowable() const;
 	bool canWithdraw(double amount) const;
     void recordWithdrawal(double amount);
 
@@ -70,9 +70,9 @@ public:
 	ostream& putDataInStream(ostream& os) const;
 	ostream& putAccountDetailsInStream(ostream& os) const;
 	istream& getDataFromStream(istream& is);
-	istream& getAccountDataFromStream(istream& is);
+	virtual istream& getAccountDataFromStream(istream& is);
 
-	const string prepareFormattedAccountDetails() const;
+	virtual const string prepareFormattedAccountDetails() const = 0;
 	const string prepareFormattedMiniAccountDetails() const;
 	const string prepareFormattedTransactionList() const;
 
