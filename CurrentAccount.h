@@ -21,6 +21,7 @@ public:
 	double getOverdraftLimit() const;
 	virtual double maxBorrowable() const;
 	virtual const string prepareFormattedAccountDetails() const;
+	virtual const string prepareFormattedMiniAccountDetails() const;
 	virtual istream& getAccountDataFromStream(istream& is);
 
 private:

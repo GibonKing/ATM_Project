@@ -17,7 +17,6 @@
 //____constructors & destructors
 
 BankAccount::BankAccount()
-	: balance_(0.0)
 {}
 BankAccount::~BankAccount()
 {}

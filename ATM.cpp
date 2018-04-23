@@ -243,19 +243,17 @@ void ATM::m_acct6_showMiniStatement() const {
 	assert(p_theActiveAccount_ != nullptr);
 
 	bool isEmpty = p_theActiveAccount_->isEmptyTransactionList();
-	string str;
+	string recentTransactions;
 	double total;
 
 	if (!isEmpty) //If transaction list is not empty
 	{
 		const int noOfTransactions = theUI_.readInNumberOfTransactions();
-
-		p_theActiveAccount_->produceNMostRecentTransactions(noOfTransactions, str, total);
-
+		p_theActiveAccount_->produceNMostRecentTransactions(noOfTransactions, recentTransactions, total);
 	}
-	const string mad = p_theActiveAccount_->prepareFormattedMiniAccountDetails();
 
-	theUI_.showMiniStatementOnScreen(isEmpty, total, mad+str);
+	const string mad = p_theActiveAccount_->prepareFormattedMiniAccountDetails();
+	theUI_.showMiniStatementOnScreen(isEmpty, total, mad + recentTransactions);
 }
 
 //---option 7

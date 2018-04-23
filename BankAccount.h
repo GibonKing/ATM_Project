@@ -74,7 +74,7 @@ public:
 	virtual istream& getAccountDataFromStream(istream& is);
 
 	virtual const string prepareFormattedAccountDetails() const = 0;
-	const string prepareFormattedMiniAccountDetails() const;
+	virtual const string prepareFormattedMiniAccountDetails() const;
 	const string prepareFormattedTransactionList() const;
 
 	static const string getAccountType(const string& filename);

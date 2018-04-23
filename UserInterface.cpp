@@ -438,29 +438,21 @@ void UserInterface::showSearchMenu() const
 	outputLine("----------------------------------------");
 }
 
-//void UserInterface::showMatchingTransactionsOnScreen(const int& amount, const int& size, const string& message) const
-//{
-//	
-//	outputHeader("SEARCH RESULTS");
-//	cout << "\n THERE ARE " << size << " TRANSACTIONS IN BANK ACCOUNT MATCHING SEARCH CRITERIA "<< char(156) << amount;
-//	
-//	cout << "\n		 " << message;
-//
-//
-//}
-
-
 void UserInterface::showMiniStatementOnScreen(const bool& isEmpty, const double& total, const string& miniStatement) const
 {
 	if (!isEmpty)
 	{
 		Date date;
 		Time time;
-		cout << "\n		RECENT TRANSACTIONS REQUESTED AT " << time.currentTime() << " ON " << date.currentDate();
-		cout << miniStatement;
-		cout << "\n		CUMULATIVE AMOUNT OF TRANSACTIONS: \234" << total;
+		outputHeader("PREPARING MINI STATEMENT...");
+		outputLine("RECENT TRANSACTIONS REQUESTED AT " + time.currentTime().toFormattedString() + " ON " + date.currentDate().toFormattedString() + "\n");
+		outputLine(miniStatement);
+		outputLine("----------------------------------------");
+		//outputLine("CUMULATIVE AMOUNT OF TRANSACTIONS: \234" + to_string(total));
+		cout << "\n      CUMULATIVE AMOUNT OF TRANSACTIONS: \234" << setw(10) << fixed << setprecision(2) << total;
+		outputLine("----------------------------------------\n");
 	}
 	else
-		cout << "\n		NO TRANSACTIONS IN BANK ACCOUNT";
+		cout << "\n      NO TRANSACTIONS IN BANK ACCOUNT.";
 }
 

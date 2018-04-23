@@ -38,6 +38,18 @@ const string CurrentAccount::prepareFormattedAccountDetails() const
 	return os.str();
 }
 
+const string CurrentAccount::prepareFormattedMiniAccountDetails() const
+{
+	assert(getAccountType(getAccountNumber()[0]) != "UNKNOWN");
+	ostringstream os;
+	double availableFunds = getBalance() + getOverdraftLimit();
+
+	os << BankAccount::prepareFormattedMiniAccountDetails();
+	os << "\n      AVAILABLE FUNDS: \234" << setw(10) << fixed << setprecision(2) << availableFunds << endl;
+
+	return os.str();
+}
+
 istream& CurrentAccount::getAccountDataFromStream(istream& is) {
 	//get BankAccount details from stream
 	BankAccount::getAccountDataFromStream(is);

@@ -44,11 +44,13 @@ TransactionList TransactionList::getMostRecentTransactions(const int& noOfTransa
 {
 	List<Transaction> trl = listOfTransactions_;
 	TransactionList trlRecent;
+
 	for (int i = 0; i < noOfTransactions; i++)
 	{
-		trlRecent.addNewTransaction(trl.first());
+		trlRecent.addNewTransactionEnd(trl.first());
 		trl = trl.tail();
 	}
+
 	return trlRecent;
 }
 
