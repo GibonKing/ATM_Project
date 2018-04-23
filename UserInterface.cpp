@@ -253,6 +253,7 @@ string UserInterface::readInString() const
 }
 
 
+
 //3b
 int UserInterface::readInSearchCommand() const
 {
@@ -355,6 +356,11 @@ void UserInterface::showTransferOnScreen(const bool & trOutOk, const bool & trIn
 void UserInterface::showErrorInvalidCommand() const
 {
 	outputLine("INVALID COMMAND CHOICE, TRY AGAIN");
+}
+
+void UserInterface::showErrorInvalidCriteria() const
+{
+	outputLine("INVALID CRITERIA CHOICE, TRY AGAIN");
 }
 
 double UserInterface::readInPositiveAmount() const

@@ -59,6 +59,7 @@ private:
 	void m_trl_showTransactionsForAmount() const;
 	void m_trl_showTransactionsForTitle() const;
 	void m_trl_showTransactionsForDate() const;
+	
 
 	//3d
 	void attemptTransfer(BankAccount* ba) const;

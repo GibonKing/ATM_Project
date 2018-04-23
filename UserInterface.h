@@ -31,6 +31,7 @@ public:
 	int showAccountMenuAndGetCommand(const string& accNum) const;
 
 	void showErrorInvalidCommand() const;
+	void showErrorInvalidCriteria() const;
 	void wait() const;
 	void endProgram() const;
 	const string readInCardToBeProcessed() const;
@@ -45,7 +46,7 @@ public:
 
 	double readInWithdrawalAmount() const;
 	double readInDepositAmount() const;
-	Date readInValidDate(Date d) const;
+	
 
 	int readInNumberOfTransactions() const;
 
@@ -60,8 +61,22 @@ public:
 	void showNoTransactionsOnScreen() const;
 	void showSearchMenu() const;
 	int readInSearchCommand() const;
+
 	double readInAmount() const;
 	string readInString() const;
+
+	template <class T>
+	T readInSearchCriteria() const
+	{
+		outputLine("INPUT THE CRITERIA TO SEARCH FOR: ");
+
+		T criteria;
+		cin >> criteria;
+
+		return criteria;
+	};
+
+	Date readInValidDate(Date d) const;
 
 	//3c
 	void showTransactionsUpToDateOnScreen(bool, Date, int, string) const;

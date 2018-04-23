@@ -333,7 +333,7 @@ void ATM::m_acct9_transferCashToAnotherAccount()
 void ATM::m_trl_showTransactionsForAmount() const
 {
 	//Get a value
-	double a = theUI_.readInAmount();
+	double a = theUI_.readInSearchCriteria<double>();
 	int n;
 	string str;
 	p_theActiveAccount_->produceTransactionsForAmount(a, n, str);
@@ -344,7 +344,7 @@ void ATM::m_trl_showTransactionsForAmount() const
 void ATM::m_trl_showTransactionsForTitle() const
 {
 	//Get a string
-	string t = theUI_.readInString();
+	string t = theUI_.readInSearchCriteria<string>();
 	int n;
 	string str;
 	p_theActiveAccount_->produceTransactionsForTitle(t, n, str);
@@ -354,13 +354,20 @@ void ATM::m_trl_showTransactionsForTitle() const
 
 void ATM::m_trl_showTransactionsForDate() const
 {
-	Date d = theUI_.readInValidDate(p_theActiveAccount_->getCreationDate());
+	Date d = theUI_.readInSearchCriteria<Date>();
 
-	int n;
-	string str;
-	p_theActiveAccount_->produceTransactionsForDate(d, n, str);
-
-	theUI_.showMatchingTransactionsOnScreen(d, n, str);
+	if (!d.isValid(p_theActiveAccount_->getCreationDate()))
+	{
+		theUI_.showErrorInvalidCriteria();
+		m_trl_showTransactionsForDate();
+	}
+	else
+	{
+		int n;
+		string str;
+		p_theActiveAccount_->produceTransactionsForDate(d, n, str);
+		theUI_.showMatchingTransactionsOnScreen(d, n, str);
+	}
 }
 
 void ATM::attemptTransfer(BankAccount* ba) const
