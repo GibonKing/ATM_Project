@@ -129,7 +129,7 @@ int ATM::validateAccount(const string& filename) const {
 	else
 		//account type not recognised
 		if (BankAccount::getAccountType(filename) == "UNKNOWN")
-		//if (getAccountTypeCode(filename) == UNKNOWN_ACCOUNT_TYPE)
+			//if (getAccountTypeCode(filename) == UNKNOWN_ACCOUNT_TYPE)
 			return INVALID_ACCOUNT_TYPE;
 		else
 			//unaccessible account (exists but not listed on card)
@@ -312,6 +312,12 @@ void ATM::m_acct9_transferCashToAnotherAccount()
 	theUI_.showCardOnScreen(card);
 
 	string processAccount = theUI_.readInAccountToBeProcessed();
+
+	while (processAccount == p_theActiveAccount_->getAccountNumber())
+	{
+		theUI_.showErrorSameAccount();
+		processAccount = theUI_.readInAccountToBeProcessed();
+	}
 	string fileName = theUI_.accountFilename(processAccount);
 
 	char validAccountCode = validateAccount(fileName);
@@ -389,8 +395,6 @@ void ATM::recordTransfer(double transferAmount, BankAccount* ba) const
 
 	p_theActiveAccount_->recordTransferOut(transferAmount, tAN);
 	ba->recordTransferIn(transferAmount, aAN);
-
-
 }
 
 //------Search Functions

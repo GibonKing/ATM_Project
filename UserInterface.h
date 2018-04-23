@@ -32,6 +32,7 @@ public:
 
 	void showErrorInvalidCommand() const;
 	void showErrorInvalidCriteria() const;
+	void showErrorSameAccount() const;
 	void wait() const;
 	void endProgram() const;
 	const string readInCardToBeProcessed() const;

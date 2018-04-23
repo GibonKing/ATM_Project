@@ -23,6 +23,7 @@ public:
 	virtual const string prepareFormattedAccountDetails() const;
 	virtual const string prepareFormattedMiniAccountDetails() const;
 	virtual istream& getAccountDataFromStream(istream& is);
+	virtual ostream& putAccountDetailsInStream(ostream& os) const;
 
 private:
 

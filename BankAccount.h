@@ -81,7 +81,7 @@ public:
 
 	//functions to put data into and get data from streams
 	ostream& putDataInStream(ostream& os) const;
-	ostream& putAccountDetailsInStream(ostream& os) const;
+	virtual ostream& putAccountDetailsInStream(ostream& os) const;
 	istream& getDataFromStream(istream& is);
 	virtual istream& getAccountDataFromStream(istream& is);
 

@@ -361,6 +361,11 @@ void UserInterface::showErrorInvalidCriteria() const
 	outputLine("INVALID CRITERIA CHOICE, TRY AGAIN");
 }
 
+void UserInterface::showErrorSameAccount() const
+{
+	outputLine("CANNOT TRANSFER TO SAME ACCOUNT, TRY AGAIN");
+}
+
 double UserInterface::readInPositiveAmount() const
 {
 	double amount;

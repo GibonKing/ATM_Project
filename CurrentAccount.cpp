@@ -59,3 +59,10 @@ istream& CurrentAccount::getAccountDataFromStream(istream& is) {
 	is >> overdraftLimit_;
 	return is;
 }
+
+ostream& CurrentAccount::putAccountDetailsInStream(ostream & os) const
+{
+	BankAccount::putAccountDetailsInStream(os);
+	os << overdraftLimit_ << "\n";
+	return os;
+}
