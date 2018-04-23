@@ -27,14 +27,6 @@ const string ChildAccount::prepareFormattedAccountDetails() const
 	return os.str();
 }
 
-istream& ChildAccount::getAccountDataFromStream(istream& is) {
-	//get BankAccount details from stream
-	SavingsAccount::getAccountDataFromStream(is);
-	is >> minimumPaidIn_;
-	is >> maximumPaidIn_;
-	return is;
-}
-
 bool ChildAccount::canDeposit(const double& amount) const 
 {
 	return (amount <= maximumPaidIn_ && amount >= minimumPaidIn_);
@@ -43,4 +35,20 @@ bool ChildAccount::canDeposit(const double& amount) const
 bool ChildAccount::canWithdraw(double amount) const
 {
 	return false;
+}
+
+istream& ChildAccount::getAccountDataFromStream(istream& is) {
+	//get BankAccount details from stream
+	SavingsAccount::getAccountDataFromStream(is);
+	is >> minimumPaidIn_;
+	is >> maximumPaidIn_;
+	return is;
+}
+
+ostream& ChildAccount::putAccountDetailsInStream(ostream& os) const
+{
+	SavingsAccount::putAccountDetailsInStream(os);
+	os << minimumPaidIn_ << "\n";
+	os << maximumPaidIn_ << "\n";
+	return os;
 }

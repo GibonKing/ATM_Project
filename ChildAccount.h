@@ -15,6 +15,8 @@ public:
 	double getMinimumPaidIn() const;
 	virtual const string prepareFormattedAccountDetails() const;
 	virtual istream& getAccountDataFromStream(istream& is);
+	virtual ostream& putAccountDetailsInStream(ostream& os) const;
+
 	virtual bool canDeposit(const double&) const;
 	virtual bool canWithdraw(double amount) const;
 private:

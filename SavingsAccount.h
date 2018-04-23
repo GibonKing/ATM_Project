@@ -20,10 +20,12 @@ public:
 
 	double getMinimumBalance() const;
 	virtual double maxBorrowable() const;
+
 	virtual const string prepareFormattedAccountDetails() const = 0;
 	virtual const string prepareFormattedMiniAccountDetails() const;
 
 	virtual istream& getAccountDataFromStream(istream& is);
+	virtual ostream& putAccountDetailsInStream(ostream& os) const;
 
 private:
 

@@ -50,15 +50,6 @@ const string ISAAccount::prepareFormattedAccountDetails() const
 	return os.str();
 }
 
-istream& ISAAccount::getAccountDataFromStream(istream& is) {
-	//get BankAccount details from stream
-	SavingsAccount::getAccountDataFromStream(is);
-	is >> maximumYearlyDeposit_;
-	is >> currentYearlyDeposit_;
-	is >> endDepositPeriod_;
-	return is;
-}
-
 bool ISAAccount::canDeposit(const double& amount) const
 {
 	return (currentYearlyDeposit_ + amount <= maximumYearlyDeposit_);
@@ -70,3 +61,20 @@ void ISAAccount::recordDeposit(double amountToDeposit)
 	BankAccount::recordDeposit(amountToDeposit);
 }
 
+istream& ISAAccount::getAccountDataFromStream(istream& is) {
+	//get BankAccount details from stream
+	SavingsAccount::getAccountDataFromStream(is);
+	is >> maximumYearlyDeposit_;
+	is >> currentYearlyDeposit_;
+	is >> endDepositPeriod_;
+	return is;
+}
+
+ostream& ISAAccount::putAccountDetailsInStream(ostream& os) const
+{
+	SavingsAccount::putAccountDetailsInStream(os);
+	os << maximumYearlyDeposit_ << "\n";
+	os << currentYearlyDeposit_ << "\n";
+	os << endDepositPeriod_ << "\n";
+	return os;
+}

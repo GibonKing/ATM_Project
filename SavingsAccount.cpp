@@ -59,3 +59,10 @@ istream& SavingsAccount::getAccountDataFromStream(istream& is) {
 	is >> minimumBalance;
 	return is;
 }
+
+ostream& SavingsAccount::putAccountDetailsInStream(ostream& os) const
+{
+	BankAccount::putAccountDetailsInStream(os);
+	os << minimumBalance << "\n";
+	return os;
+}

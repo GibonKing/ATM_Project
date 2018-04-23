@@ -23,9 +23,12 @@ public:
 	Date getEndDepositPeriod() const;
 
 	virtual const string prepareFormattedAccountDetails() const;
-	virtual istream& getAccountDataFromStream(istream& is);
+
 	virtual bool canDeposit(const double&) const;
 	virtual void recordDeposit(double amountToDeposit);
+
+	virtual istream& getAccountDataFromStream(istream& is);
+	virtual ostream& putAccountDetailsInStream(ostream& os) const;
 
 private:
 
