@@ -54,48 +54,66 @@ TransactionList TransactionList::getMostRecentTransactions(const int& noOfTransa
 	return trlRecent;
 }
 
-TransactionList TransactionList::getTransactionsUpToDate(const Date& d) const
+TransactionList TransactionList::getTransactionsUpToDate(const Date& d)
 {
 
-	//ADD RECURSION TO ALL GET TRANSACTIONS
-
-	//Copy of list
-	List<Transaction> trlist = listOfTransactions_;
-	TransactionList trReturn;
-
-	//For every item in the list (Most recent first)
-	for (int i(0); i < listOfTransactions_.length(); i++)
+	if (listOfTransactions_.length() != 0)
 	{
-		//If first date in list is less than or equal to given date
-		if (!(trlist.first().getDate() > d))
+		if (listOfTransactions_.first().getDate() > d)
 		{
-			//Add it to temporary transaction list
-			trReturn.addNewTransactionEnd(trlist.first());
+			deleteFirstTransaction();
+			return getTransactionsUpToDate(d);
 		}
-		//Go to next transaction
-		trlist = trlist.tail();
+		else
+		{
+			return (*this);
+		}
+	}
+	else
+	{
+		return (*this);
 	}
 
-	//Return ammended transaction list
-	return trReturn;
+	////For every item in the list (Most recent first)
+	//for (int i(0); i < listOfTransactions_.length(); i++)
+	//{
+	//	//If first date in list is less than or equal to given date
+	//	if (!(trlist.first().getDate() > d))
+	//	{
+	//		//Add it to temporary transaction list
+	//		trReturn.addNewTransactionEnd(trlist.first());
+	//	}
+	//	//Go to next transaction
+	//	trlist = trlist.tail();
+	//}
+	//
+	////Return ammended transaction list
+	//return trReturn;
 }
 
 void TransactionList::deleteTransactionsUpToDate(const Date& d)
 {
+	TransactionList temp = (*this);
+	TransactionList tempList = temp.getTransactionsUpToDate(d);
 
-	int numToDelete = getTransactionsUpToDate(d).size();
-	int numToAdd = size() - numToDelete;
-
-	TransactionList tempList;
-	TransactionList copyOfList = (*this);
-	for (int i(0); i < numToAdd; i++)
+	if (tempList.getTransactionList().length() != 0)
 	{
-		tempList.addNewTransaction(copyOfList.newestTransaction());
-		copyOfList.deleteFirstTransaction();
+		deleteGivenTransaction(tempList.getTransactionList().first());
+		deleteTransactionsUpToDate(d);
 	}
 
-	listOfTransactions_ = tempList.getTransactionList();
-
+	//int numToDelete = getTransactionsUpToDate(d).size();
+	//int numToAdd = size() - numToDelete;
+	//
+	//TransactionList tempList;
+	//TransactionList copyOfList = (*this);
+	//for (int i(0); i < numToAdd; i++)
+	//{
+	//	tempList.addNewTransaction(copyOfList.newestTransaction());
+	//	copyOfList.deleteFirstTransaction();
+	//}
+	//
+	//listOfTransactions_ = tempList.getTransactionList();
 }
 
 

@@ -289,6 +289,7 @@ void UserInterface::showTransactionsUpToDateOnScreen(bool isEmpty, Date d, int s
 	else
 	{
 		cout << "\n      FOUND " << size << " TRANSACTIONS UP TO DATE " << d.toFormattedString() << "\n";
+		cout << str;
 	}
 
 

@@ -101,7 +101,7 @@ public:
 	};
 
 	//Q3c
-	TransactionList getTransactionsUpToDate(const Date&) const;
+	TransactionList getTransactionsUpToDate(const Date&);
 	void deleteTransactionsUpToDate(const Date&);
 
 	//Mutators
@@ -111,6 +111,7 @@ public:
     const  TransactionList olderTransactions() const;
     void   deleteFirstTransaction();
     void   deleteGivenTransaction(const Transaction&);
+
 	int    size() const;
 
 	const string toFormattedString() const;		//return transactionlist as a (formatted) string
