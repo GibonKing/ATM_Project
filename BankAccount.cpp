@@ -140,9 +140,8 @@ string BankAccount::produceAllDepositTransactions(double& total)
 ////Q3b
 void BankAccount::produceTransactionsUpToDate(const Date& d, int& n, string& str)
 {
-	//TransactionList temp = transactions_;
-
-	TransactionList trl = transactions_.getTransactionsUpToDate(d);
+	TransactionList temp = transactions_;
+	TransactionList trl = temp.getTransactionsUpToDate(d);
 
 	n = trl.size();
 	str = trl.toFormattedString();
