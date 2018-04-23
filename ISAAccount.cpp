@@ -45,6 +45,7 @@ const string ISAAccount::prepareFormattedAccountDetails() const
 	os << "\n      MAXIMUM YEARLY DEPOSIT: \234" << setw(10) << getMaximumYearlyDeposit();
 	os << "\n      CURRENT YEARLY DEPOSIT: \234" << setw(10) << getCurrentYearlyDeposit();
 	os << "\n      END DEPOSIT PERIOD:         " << endDepositPeriod_.toFormattedString();
+	os << "\n      ----------------------------------------";
 
 	return os.str();
 }

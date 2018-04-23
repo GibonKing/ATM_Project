@@ -153,9 +153,8 @@ Date UserInterface::readInValidDate(Date cd) const
 		cout << "ERROR: ";
 		readInValidDate(cd);
 	}
-
-	//else return date
-	return aDate;
+	else//else return date
+		return aDate;
 }
 
 
@@ -285,13 +284,11 @@ void UserInterface::showTransactionsUpToDateOnScreen(bool isEmpty, Date d, int s
 {
 	if (isEmpty)
 	{
-		outputLine("NO TRANSACTIONS TO SHOW UP TO " + d.toFormattedString() + ".");
+		outputLine("NO TRANSACTIONS TO SHOW IN BANK ACCOUNT");
 	}
 	else
 	{
-		//string s = "FOUND " + size. + " TRANSACTIONS UP TO DATE " + d.toFormattedString() + ":"
-		cout << "\n      FOUND " << size << " TRANSACTIONS UP TO DATE " << d.toFormattedString() << ":\n";
-		cout << "\n      " << str;
+		cout << "\n      FOUND " << size << " TRANSACTIONS UP TO DATE " << d.toFormattedString() << "\n";
 	}
 
 

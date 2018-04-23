@@ -29,10 +29,13 @@ double SavingsAccount::maxBorrowable() const
 const string SavingsAccount::prepareFormattedAccountDetails() const
 {
 	assert(getAccountType(getAccountNumber()[0]) != "UNKOWN");
-
 	ostringstream os;
+	double availableFunds = getBalance() - getMinimumBalance();
+
 	os << BankAccount::prepareFormattedAccountDetails();
-	os << "\n      MINIMUM BALANCE: \234" << setw(10) << getMinimumBalance();
+	os << "\n      MINIMUM BALANCE: \234" << setw(10) << fixed << setprecision(2) << getMinimumBalance();
+	os << "\n      AVAILABLE FUNDS: \234" << setw(10) << fixed << setprecision(2) << availableFunds << endl;
+	os << "\n      ----------------------------------------";
 
 	return os.str();
 }
@@ -44,7 +47,8 @@ const string SavingsAccount::prepareFormattedMiniAccountDetails() const
 	double availableFunds = getBalance() - getMinimumBalance();
 
 	os << BankAccount::prepareFormattedMiniAccountDetails();
-	os << "\n      AVAILABLE FUNDS: \234" << setw(10) << fixed << setprecision(2) << availableFunds << endl;
+	os << "\n      AVAILABLE FUNDS: \234" << setw(10) << fixed << setprecision(2) << availableFunds;
+	os << "\n      ----------------------------------------";
 
 	return os.str();
 }

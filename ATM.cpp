@@ -280,8 +280,8 @@ void ATM::m_acct7_searchForTransactions()
 void ATM::m_acct8_clearAllTransactionsUpToDate()
 {
 	assert(p_theActiveAccount_ != nullptr);
-	bool isEmpty = (p_theActiveAccount_->isEmptyTransactionList());
 
+	bool isEmpty = (p_theActiveAccount_->isEmptyTransactionList());
 	Date d;
 	string str = "";
 	int n = 0;

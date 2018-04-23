@@ -30,9 +30,11 @@ const string CurrentAccount::prepareFormattedAccountDetails() const
 {
 	assert(getAccountType(getAccountNumber()[0]) != "UNKOWN");
 	ostringstream os;
+	double availableFunds = getBalance() + getOverdraftLimit();
 
 	os << BankAccount::prepareFormattedAccountDetails();
-	os << "\n      OVERDRAFT LIMIT: \234" << setw(10) << getOverdraftLimit();
+	os << "\n      OVERDRAFT LIMIT: \234" << setw(10) << fixed << setprecision(2) << getOverdraftLimit();
+	os << "\n      AVAILABLE FUNDS: \234" << setw(10) << fixed << setprecision(2) << availableFunds;
 	os << "\n      ----------------------------------------";
 
 	return os.str();
@@ -45,7 +47,8 @@ const string CurrentAccount::prepareFormattedMiniAccountDetails() const
 	double availableFunds = getBalance() + getOverdraftLimit();
 
 	os << BankAccount::prepareFormattedMiniAccountDetails();
-	os << "\n      AVAILABLE FUNDS: \234" << setw(10) << fixed << setprecision(2) << availableFunds << endl;
+	os << "\n      AVAILABLE FUNDS: \234" << setw(10) << fixed << setprecision(2) << availableFunds;
+	os << "\n      ----------------------------------------";
 
 	return os.str();
 }
