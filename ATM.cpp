@@ -336,7 +336,7 @@ void ATM::m_trl_showTransactionsForAmount() const
 	double a = theUI_.readInSearchCriteria<double>();
 	int n;
 	string str;
-	p_theActiveAccount_->produceTransactionsForAmount(a, n, str);
+	p_theActiveAccount_->produceTransactionsForSearchCriteria<double>(a, n, str);
 
 	theUI_.showMatchingTransactionsOnScreen(a, n, str);
 }
@@ -347,7 +347,7 @@ void ATM::m_trl_showTransactionsForTitle() const
 	string t = theUI_.readInSearchCriteria<string>();
 	int n;
 	string str;
-	p_theActiveAccount_->produceTransactionsForTitle(t, n, str);
+	p_theActiveAccount_->produceTransactionsForSearchCriteria<string>(t, n, str);
 	//
 	theUI_.showMatchingTransactionsOnScreen(t, n, str);
 }
@@ -365,7 +365,7 @@ void ATM::m_trl_showTransactionsForDate() const
 	{
 		int n;
 		string str;
-		p_theActiveAccount_->produceTransactionsForDate(d, n, str);
+		p_theActiveAccount_->produceTransactionsForSearchCriteria<Date>(d, n, str);
 		theUI_.showMatchingTransactionsOnScreen(d, n, str);
 	}
 }

@@ -122,6 +122,21 @@ TransactionList TransactionList::getTransactionsForDate(const Date& d) const
 	return trReturn;
 }
 
+TransactionList TransactionList::getTransactionsForSearchCriteria(const double& amt) const
+{
+	return getTransactionsForAmount(amt);
+}
+
+TransactionList TransactionList::getTransactionsForSearchCriteria(const string& title) const
+{
+	return getTransactionsForTitle(title);
+}
+
+TransactionList TransactionList::getTransactionsForSearchCriteria(const Date& date) const
+{
+	return getTransactionsForDate(date);
+}
+
 TransactionList TransactionList::getTransactionsUpToDate(const Date& d) const
 {
 

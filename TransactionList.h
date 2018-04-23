@@ -32,6 +32,11 @@ public:
 	TransactionList getTransactionsForTitle(const string&) const;
 	TransactionList getTransactionsForDate(const Date&) const;
 
+	TransactionList getTransactionsForSearchCriteria(const double&) const;
+	TransactionList getTransactionsForSearchCriteria(const string&) const;
+	TransactionList getTransactionsForSearchCriteria(const Date&) const;
+
+
 	//Q3c
 	TransactionList getTransactionsUpToDate(const Date&) const;
 	void deleteTransactionsUpToDate(const Date&);

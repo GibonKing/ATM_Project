@@ -56,6 +56,18 @@ public:
 	void produceTransactionsForTitle(const string&, int&, string&);
 	void produceTransactionsForDate(const Date&, int&, string&);
 
+	template <class T>
+	void produceTransactionsForSearchCriteria(const T& criteria, int& size, string& transactionString)
+	{
+		////Make a copy of all transactions with that amount in them
+		TransactionList trl = transactions_.getTransactionsForSearchCriteria(criteria);
+
+		//Save that lists size
+		size = trl.size();
+		//Format the string ready for output in UI
+		transactionString = trl.toFormattedString();
+	}
+
 	//Q3c
 	void produceTransactionsUpToDate(const Date&, int&, string&);
 	void recordDeletionOfTransactionUpToDate(const Date& d);
