@@ -52,9 +52,9 @@ public:
 	void produceNMostRecentTransactions(const int& noOfTransactions, string& recentTransactions, double& totalAmount) const;
 
 	//Q3b
-	void produceTransactionsForAmount(const double&, int&, string&);
-	void produceTransactionsForTitle(const string&, int&, string&);
-	void produceTransactionsForDate(const Date&, int&, string&);
+	//void produceTransactionsForAmount(const double&, int&, string&);
+	//void produceTransactionsForTitle(const string&, int&, string&);
+	//void produceTransactionsForDate(const Date&, int&, string&);
 
 	template <class T>
 	void produceTransactionsForSearchCriteria(const T& criteria, int& size, string& transactionString)

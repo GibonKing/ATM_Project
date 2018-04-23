@@ -137,37 +137,37 @@ string BankAccount::produceAllDepositTransactions(double& total)
 	return str;
 }
 
-//Q3b
-void BankAccount::produceTransactionsForAmount(const double& a, int& n, string& str)
-{
-	//Make a copy of all transactions with that amount in them
-	TransactionList trl = transactions_.getTransactionsForAmount(a);
-
-	//Save that lists size
-	n = trl.size();
-
-	//Format the string ready for output in UI
-	str = trl.toFormattedString();
-}
-
-void BankAccount::produceTransactionsForTitle(const string& t, int& n, string& str)
-{
-	//Make a copy of all transactions with that amount in them
-	TransactionList trl = transactions_.getTransactionsForTitle(t);
-
-	//Save that lists size
-	n = trl.size();
-
-	//Format the string ready for output in UI
-	str = trl.toFormattedString();
-}
-
-void BankAccount::produceTransactionsForDate(const Date& d, int& n, string& str)
-{
-	TransactionList trl = transactions_.getTransactionsForDate(d);
-	n = trl.size();
-	str = trl.toFormattedString();
-}
+////Q3b
+//void BankAccount::produceTransactionsForAmount(const double& a, int& n, string& str)
+//{
+//	//Make a copy of all transactions with that amount in them
+//	TransactionList trl = transactions_.getTransactionsForSearchCriteria(a);
+//
+//	//Save that lists size
+//	n = trl.size();
+//
+//	//Format the string ready for output in UI
+//	str = trl.toFormattedString();
+//}
+//
+//void BankAccount::produceTransactionsForTitle(const string& t, int& n, string& str)
+//{
+//	//Make a copy of all transactions with that amount in them
+//	TransactionList trl = transactions_.getTransactionsForSearchCriteria(t);
+//
+//	//Save that lists size
+//	n = trl.size();
+//
+//	//Format the string ready for output in UI
+//	str = trl.toFormattedString();
+//}
+//
+//void BankAccount::produceTransactionsForDate(const Date& d, int& n, string& str)
+//{
+//	TransactionList trl = transactions_.getTransactionsForSearchCriteria(d);
+//	n = trl.size();
+//	str = trl.toFormattedString();
+//}
 
 void BankAccount::produceTransactionsUpToDate(const Date& d, int& n, string& str)
 {
