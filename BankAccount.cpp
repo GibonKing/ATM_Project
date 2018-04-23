@@ -157,10 +157,9 @@ bool BankAccount::canTransferOut(const double& amt)
 	return canWithdraw(amt);
 }
 
-bool BankAccount::canTransferIn(const double &)
+bool BankAccount::canTransferIn(const double& amt)
 {
-	//SOME CASE HERE
-	return true;
+	return canDeposit(amt);
 }
 
 void BankAccount::recordTransferOut(const double & transferAmount, const string & accNum)

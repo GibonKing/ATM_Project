@@ -39,3 +39,8 @@ bool ChildAccount::canDeposit(const double& amount) const
 {
 	return (amount <= maximumPaidIn_ && amount >= minimumPaidIn_);
 }
+
+bool ChildAccount::canWithdraw(double amount) const
+{
+	return false;
+}

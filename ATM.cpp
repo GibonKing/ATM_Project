@@ -377,10 +377,9 @@ void ATM::attemptTransfer(BankAccount* ba) const
 	bool trInOk = ba->canTransferIn(transferAmount); //WILL CHANGE PER ACCOUNT
 
 	if (trOutOk && trInOk)
-	{
 		recordTransfer(transferAmount, ba);
-		theUI_.showTransferOnScreen(trOutOk, trInOk, transferAmount);
-	}
+
+	theUI_.showTransferOnScreen(trOutOk, trInOk, transferAmount);
 }
 
 void ATM::recordTransfer(double transferAmount, BankAccount* ba) const

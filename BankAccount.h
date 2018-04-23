@@ -38,7 +38,7 @@ public:
     virtual void recordDeposit(double amount);
 
 	virtual double maxBorrowable() const;
-	bool canWithdraw(double amount) const;
+	virtual bool canWithdraw(double amount) const;
 	virtual bool canDeposit(const double&) const;
     void recordWithdrawal(double amount);
 
