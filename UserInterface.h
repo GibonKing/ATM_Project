@@ -87,7 +87,7 @@ public:
 	//3d
 	void showCardOnScreen(const string&) const;
 	double readInTransferAmount() const;
-	void showTransferOnScreen(const bool& trOutOk, const bool& trInOk, const double& transferAmount) const;
+	void showTransferOnScreen(const bool& trOutOk, const bool& trInOk, const string& trOutError, const string& trInError, const double& transferAmount) const;
 	
 	
 	template <class T>

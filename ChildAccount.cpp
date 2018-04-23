@@ -37,6 +37,24 @@ bool ChildAccount::canWithdraw(double amount) const
 	return false;
 }
 
+bool ChildAccount::canTransferOut(const double& amt, string& trOutError)
+{
+	//IF AN ERROR SHOULD BE SHOWN
+	if (!canWithdraw(amt))
+		trOutError = "ERROR: CANNOT TRANSFER MONEY FROM A CHILD ACCOUNT";
+
+	return canWithdraw(amt);
+}
+
+bool ChildAccount::canTransferIn(const double& amt, string& trInError)
+{
+	//IF AN ERROR SHOULD BE SHOWN
+	if (!canDeposit(amt))
+		trInError = "ERROR: TARGET ACCOUNT CAN RECIEVE NO MORE THAN \234" + to_string((int)getMaximumPaidIn()) + " AND NO LESS THAN \234" + to_string((int)getMinimumPaidIn()) + " PER TRANSACTION";
+
+	return canDeposit(amt);
+}
+
 istream& ChildAccount::getAccountDataFromStream(istream& is) {
 	//get BankAccount details from stream
 	SavingsAccount::getAccountDataFromStream(is);

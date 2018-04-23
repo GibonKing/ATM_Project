@@ -19,6 +19,10 @@ public:
 
 	virtual bool canDeposit(const double&) const;
 	virtual bool canWithdraw(double amount) const;
+
+	virtual bool canTransferOut(const double&, string&);
+	virtual bool canTransferIn(const double&, string&);
+
 private:
 	double maximumPaidIn_;
 	double minimumPaidIn_;

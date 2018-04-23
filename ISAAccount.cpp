@@ -31,6 +31,15 @@ Date ISAAccount::getEndDepositPeriod() const
 	return endDepositPeriod_;
 }
 
+bool ISAAccount::canTransferIn(const double& amt, string& trInError)
+{
+	//IF AN ERROR SHOULD BE SHOWN
+	if (!canDeposit(amt))
+		trInError = "ERROR: TARGET ACCOUNT WOULD EXCEED THEIR YEARLY DEPOSIT CAP.";
+
+	return canDeposit(amt);
+}
+
 void ISAAccount::updateCurrentYearlyDeposit(const double& amount)
 {
 	currentYearlyDeposit_ += amount;

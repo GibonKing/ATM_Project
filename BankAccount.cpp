@@ -152,13 +152,20 @@ void BankAccount::recordDeletionOfTransactionUpToDate(const Date & d)
 	transactions_.deleteTransactionsUpToDate(d);
 }
 
-bool BankAccount::canTransferOut(const double& amt)
+bool BankAccount::canTransferOut(const double& amt, string& trOutError)
 {
+	//IF AN ERROR SHOULD BE SHOWN
+	if (!canWithdraw(amt))
+		trOutError = ""; //WILL BE OVERWRITTEN by virtuals SO NO NEED TO DEFINE, PLACEHOLDER
+
 	return canWithdraw(amt);
 }
 
-bool BankAccount::canTransferIn(const double& amt)
+bool BankAccount::canTransferIn(const double& amt, string& trInError)
 {
+	//IF AN ERROR SHOULD BE SHOWN
+	if (!canDeposit(amt))
+		trInError = ""; //WILL BE OVERWRITTEN by virtuals SO NO NEED TO DEFINE, PLACEHOLDER
 	return canDeposit(amt);
 }
 

@@ -73,8 +73,9 @@ public:
 	void recordDeletionOfTransactionUpToDate(const Date& d);
 
 	//Q3d
-	bool canTransferOut(const double&); 
-	bool canTransferIn(const double&);
+	virtual bool canTransferOut(const double&, string&); 
+	virtual bool canTransferIn(const double&, string&);
+
 	void recordTransferOut(const double& transferAmount, const string& accNum);
 	void recordTransferIn(const double& transferAmount, const string& accNum);
 

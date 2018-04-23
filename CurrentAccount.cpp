@@ -26,6 +26,16 @@ double CurrentAccount::maxBorrowable() const
 	return (getBalance() + getOverdraftLimit());
 }
 
+bool CurrentAccount::canTransferOut(const double& amt, string& trOutError)
+{
+	//IF AN ERROR SHOULD BE SHOWN
+	if (!canWithdraw(amt))
+		trOutError = "ERROR: AMOUNT WOULD EXCEED YOUR OVERDRAFT LIMIT";
+
+	return canWithdraw(amt);
+}
+
+
 const string CurrentAccount::prepareFormattedAccountDetails() const
 {
 	assert(getAccountType(getAccountNumber()[0]) != "UNKOWN");

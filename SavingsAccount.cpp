@@ -26,6 +26,25 @@ double SavingsAccount::maxBorrowable() const
 	return (getBalance() - getMinimumBalance());
 }
 
+bool SavingsAccount::canTransferOut(const double& amt, string& trOutError)
+{
+	//IF AN ERROR SHOULD BE SHOWN
+	if (!canWithdraw(amt))
+		trOutError = "ERROR: AMOUNT WOULD EXCEED YOUR MINIMUM BALANCE LIMIT";
+
+	return canWithdraw(amt);
+}
+
+bool SavingsAccount::canTransferIn(const double& amt, string& trInError)
+{
+	//IF AN ERROR SHOULD BE SHOWN
+	if (!canDeposit(amt))
+		trInError = "ERROR: AMOUNT WOULD EXCEED TARGET ACCOUNT'S MAXIMUM BALANCE LIMIT";
+
+	return canWithdraw(amt);
+}
+
+
 const string SavingsAccount::prepareFormattedAccountDetails() const
 {
 	assert(getAccountType(getAccountNumber()[0]) != "UNKOWN");

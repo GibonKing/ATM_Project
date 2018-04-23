@@ -337,17 +337,22 @@ double UserInterface::readInTransferAmount() const
 	return amt;
 }
 
-void UserInterface::showTransferOnScreen(const bool & trOutOk, const bool & trInOk, const double & transferAmount) const
+void UserInterface::showTransferOnScreen(const bool & trOutOk, const bool & trInOk, const string& trOutError, const string& trInError, const double & transferAmount) const
 {
 
-	if (!trOutOk || !trInOk)
+	if (!trOutOk)
 	{
-		outputLine("CANNOT TRANSFER MONEY TO ACCOUNT");
+		outputLine(trOutError);
 	}
-	else
+	if (!trInOk)
 	{
-		outputLine("Transferred ");
-		//ADD STUFF
+		outputLine(trInError);
+	}
+
+
+	if (trOutOk && trInOk)
+	{
+		outputLine("TRANSFER SUCCESSFUL.");
 	}
 }
 

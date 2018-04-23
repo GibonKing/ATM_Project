@@ -147,6 +147,7 @@ void ATM::executeAccountCommand() {
 	const string bankAccountFilename(theUI_.accountFilename(anAccountNumber));
 	const int validAccountCode(validateAccount(bankAccountFilename));
 	theUI_.showValidateAccountOnScreen(validAccountCode, anAccountNumber);
+
 	if (validAccountCode == VALID_ACCOUNT) //valid account: exists, accessible with card and not already open
 	{
 		//dynamically create a bank account to store data from file
@@ -379,13 +380,18 @@ void ATM::m_trl_showTransactionsForDate() const
 void ATM::attemptTransfer(BankAccount* ba) const
 {
 	double transferAmount = theUI_.readInTransferAmount();
-	bool trOutOk = p_theActiveAccount_->canTransferOut(transferAmount);
-	bool trInOk = ba->canTransferIn(transferAmount); //WILL CHANGE PER ACCOUNT
+
+	string trOutError = "";
+	string trInError = "";
+
+	bool trOutOk = p_theActiveAccount_->canTransferOut(transferAmount, trOutError);
+	bool trInOk = ba->canTransferIn(transferAmount, trInError); 
+	
 
 	if (trOutOk && trInOk)
 		recordTransfer(transferAmount, ba);
 
-	theUI_.showTransferOnScreen(trOutOk, trInOk, transferAmount);
+	theUI_.showTransferOnScreen(trOutOk, trInOk, trOutError, trInError, transferAmount);
 }
 
 void ATM::recordTransfer(double transferAmount, BankAccount* ba) const
