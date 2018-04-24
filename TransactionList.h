@@ -4,7 +4,7 @@
 //Team: 
 //Alex Fullarton, 26038657, CS4G
 //Jake Hanne, 26027599, CS4G
-//Dave Harrison
+//Dave Harrison, 26011054, CS4G
 
 #ifndef TransactionListH
 #define TransactionListH
