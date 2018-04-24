@@ -24,6 +24,9 @@ using namespace std;
 
 class UserInterface {
 public:
+
+	static UserInterface& getInstance();
+
 	void showByeScreen() const;
 
 	int showMainMenuAndGetCommand() const;
@@ -102,6 +105,10 @@ public:
 	
 
 private:
+	UserInterface() {};
+	UserInterface(const UserInterface&) = delete;
+	UserInterface& operator=(const UserInterface&) = delete;
+
 	//support functions
 	int readInCommand() const;
 	double readInPositiveAmount() const;

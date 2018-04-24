@@ -16,7 +16,7 @@
 //____constructors & destructors
 
 ATM::ATM()
-	: p_theActiveAccount_(nullptr), p_theCard_(nullptr), theUI_()
+	: p_theActiveAccount_(nullptr), p_theCard_(nullptr)
 {}
 
 ATM::~ATM()
