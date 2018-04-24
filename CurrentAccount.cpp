@@ -26,7 +26,7 @@ double CurrentAccount::maxBorrowable() const
 	return (getBalance() + getOverdraftLimit());
 }
 
-bool CurrentAccount::canTransferOut(const double& amt, string& trOutError)
+bool CurrentAccount::canTransferOut(const double& amt, string& trOutError) const
 {
 	//IF AN ERROR SHOULD BE SHOWN
 	if (!canWithdraw(amt))

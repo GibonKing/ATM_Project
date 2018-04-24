@@ -11,17 +11,22 @@ class ChildAccount : public SavingsAccount {
 public:
 	ChildAccount();
 	~ChildAccount();
+
+	//assessors
 	double getMaximumPaidIn() const;
 	double getMinimumPaidIn() const;
-	virtual const string prepareFormattedAccountDetails() const;
-	virtual istream& getAccountDataFromStream(istream& is);
-	virtual ostream& putAccountDetailsInStream(ostream& os) const;
 
 	virtual bool canDeposit(const double&) const;
-	virtual bool canWithdraw(double amount) const;
+	virtual bool canWithdraw(const double&) const;
 
-	virtual bool canTransferOut(const double&, string&);
-	virtual bool canTransferIn(const double&, string&);
+	virtual bool canTransferOut(const double&, string&) const;
+	virtual bool canTransferIn(const double&, string&) const;
+
+	virtual const string prepareFormattedAccountDetails() const;
+
+	//File input/output
+	virtual istream& getAccountDataFromStream(istream& is);
+	virtual ostream& putAccountDetailsInStream(ostream& os) const;
 
 private:
 	double maximumPaidIn_;

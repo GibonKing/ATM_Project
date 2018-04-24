@@ -25,39 +25,34 @@ public:
 	BankAccount();
     ~BankAccount();
 
-	//getter (assessor) functions
+	//Assessors
     const string getAccountNumber() const;
     const Date getCreationDate() const;
 	double getBalance() const;
     const TransactionList getAllDepositTransactions() const;
     bool isEmptyTransactionList() const;
-
-	//other operations
-	const string prepareFormattedStatement() const;
-
-    virtual void recordDeposit(double amount);
-
-	virtual double maxBorrowable() const;
-	virtual bool canWithdraw(double amount) const;
+	virtual bool canWithdraw(const double&) const;
 	virtual bool canDeposit(const double&) const;
-    void recordWithdrawal(double amount);
+	virtual double maxBorrowable() const;
+	const string prepareFormattedStatement() const;
+	
+
+	//mutators
+    virtual void recordDeposit(const double&);
+    void recordWithdrawal(const double&);
 
 	void readInBankAccountFromFile(const string& fileName);
 	void storeBankAccountInFile(const string& fileName) const;
 
-	//Q1
-	string produceAllDepositTransactions(double&);
+	//Q1 (NOT ASSESSED)
+	string produceAllDepositTransactions(double&) const;
 
 	//Q3a
 	void produceNMostRecentTransactions(const int& noOfTransactions, string& recentTransactions, double& totalAmount) const;
 
 	//Q3b
-	//void produceTransactionsForAmount(const double&, int&, string&);
-	//void produceTransactionsForTitle(const string&, int&, string&);
-	//void produceTransactionsForDate(const Date&, int&, string&);
-
 	template <class T>
-	void produceTransactionsForSearchCriteria(const T& criteria, int& size, string& transactionString)
+	void produceTransactionsForSearchCriteria(const T& criteria, int& size, string& transactionString) const
 	{
 		////Make a copy of all transactions with that amount in them
 		TransactionList trl = transactions_.getTransactionsForSearchCriteria(criteria);
@@ -69,12 +64,12 @@ public:
 	}
 
 	//Q3c
-	void produceTransactionsUpToDate(const Date&, int&, string&);
+	void produceTransactionsUpToDate(const Date&, int&, string&) const;
 	void recordDeletionOfTransactionUpToDate(const Date& d);
 
 	//Q3d
-	virtual bool canTransferOut(const double&, string&); 
-	virtual bool canTransferIn(const double&, string&);
+	virtual bool canTransferOut(const double&, string&) const; 
+	virtual bool canTransferIn(const double&, string&) const;
 
 	void recordTransferOut(const double& transferAmount, const string& accNum);
 	virtual void recordTransferIn(const double& transferAmount, const string& accNum);

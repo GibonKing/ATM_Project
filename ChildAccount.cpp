@@ -32,12 +32,12 @@ bool ChildAccount::canDeposit(const double& amount) const
 	return (amount <= maximumPaidIn_ && amount >= minimumPaidIn_);
 }
 
-bool ChildAccount::canWithdraw(double amount) const
+bool ChildAccount::canWithdraw(const double& amount) const
 {
 	return false;
 }
 
-bool ChildAccount::canTransferOut(const double& amt, string& trOutError)
+bool ChildAccount::canTransferOut(const double& amt, string& trOutError) const
 {
 	//IF AN ERROR SHOULD BE SHOWN
 	if (!canWithdraw(amt))
@@ -46,7 +46,7 @@ bool ChildAccount::canTransferOut(const double& amt, string& trOutError)
 	return canWithdraw(amt);
 }
 
-bool ChildAccount::canTransferIn(const double& amt, string& trInError)
+bool ChildAccount::canTransferIn(const double& amt, string& trInError) const
 {
 	//IF AN ERROR SHOULD BE SHOWN
 	if (!canDeposit(amt))

@@ -95,7 +95,7 @@ const string BankAccount::getAccountType(char n) {
 	}
 }
 
-void BankAccount::recordDeposit(double amountToDeposit) {
+void BankAccount::recordDeposit(const double& amountToDeposit) {
 	//create a deposit transaction
 	Transaction aTransaction("deposit_to_ATM", amountToDeposit);
 	//update active bankaccount
@@ -107,7 +107,7 @@ double BankAccount::maxBorrowable() const {
 	//return borrowable amount
 	return balance_;
 }
-bool BankAccount::canWithdraw(double amountToWithdraw) const {
+bool BankAccount::canWithdraw(const double& amountToWithdraw) const {
 	//check if enough money in account
 	return amountToWithdraw <= maxBorrowable();
 }
@@ -116,7 +116,7 @@ bool BankAccount::canDeposit(const double&) const {
 	return true;
 }
 
-void BankAccount::recordWithdrawal(double amountToWithdraw) {
+void BankAccount::recordWithdrawal(const double& amountToWithdraw) {
 	//create a withdrawal transaction
 	Transaction aTransaction("withdrawal_from_ATM", -amountToWithdraw);
 	//update active bankaccount
@@ -125,7 +125,7 @@ void BankAccount::recordWithdrawal(double amountToWithdraw) {
 }
 
 //Q1
-string BankAccount::produceAllDepositTransactions(double& total)
+string BankAccount::produceAllDepositTransactions(double& total) const
 {
 	TransactionList trl = getAllDepositTransactions();
 
@@ -136,7 +136,7 @@ string BankAccount::produceAllDepositTransactions(double& total)
 }
 
 ////Q3b
-void BankAccount::produceTransactionsUpToDate(const Date& d, int& n, string& str)
+void BankAccount::produceTransactionsUpToDate(const Date& d, int& n, string& str) const
 {
 	TransactionList temp = transactions_;
 	TransactionList trl = temp.getTransactionsUpToDate(d);
@@ -150,7 +150,7 @@ void BankAccount::recordDeletionOfTransactionUpToDate(const Date & d)
 	transactions_.deleteTransactionsUpToDate(d);
 }
 
-bool BankAccount::canTransferOut(const double& amt, string& trOutError)
+bool BankAccount::canTransferOut(const double& amt, string& trOutError) const
 {
 	//IF AN ERROR SHOULD BE SHOWN
 	if (!canWithdraw(amt))
@@ -159,7 +159,7 @@ bool BankAccount::canTransferOut(const double& amt, string& trOutError)
 	return canWithdraw(amt);
 }
 
-bool BankAccount::canTransferIn(const double& amt, string& trInError)
+bool BankAccount::canTransferIn(const double& amt, string& trInError) const
 {
 	//IF AN ERROR SHOULD BE SHOWN
 	if (!canDeposit(amt))
@@ -181,9 +181,6 @@ void BankAccount::recordTransferIn(const double & transferAmount, const string &
 	transactions_.addNewTransaction(t);
 	updateBalance(transferAmount);
 }
-
-
-
 
 const string BankAccount::prepareFormattedStatement() const {
 	ostringstream os;

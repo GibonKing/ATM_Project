@@ -25,8 +25,8 @@ public:
 	virtual const string prepareFormattedMiniAccountDetails() const;
 
 
-	virtual bool canTransferOut(const double&, string&);
-	virtual bool canTransferIn(const double&, string&);
+	virtual bool canTransferOut(const double&, string&) const;
+	virtual bool canTransferIn(const double&, string&) const;
 	virtual void recordTransferIn(const double& transferAmount, const string& accNum);
 
 	virtual istream& getAccountDataFromStream(istream& is);

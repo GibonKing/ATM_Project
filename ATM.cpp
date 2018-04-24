@@ -264,7 +264,7 @@ void ATM::m_acct6_showMiniStatement() const {
 }
 
 //---option 7
-void ATM::m_acct7_searchForTransactions() 
+void ATM::m_acct7_searchForTransactions() const 
 {
 	assert(p_theActiveAccount_ != nullptr);
 	bool isEmpty = (p_theActiveAccount_->isEmptyTransactionList());
@@ -399,7 +399,7 @@ void ATM::attemptTransfer(BankAccount* ba) const
 	theUI_.showTransferOnScreen(trOutOk, trInOk, trOutError, trInError, transferAmount);
 }
 
-void ATM::recordTransfer(double transferAmount, BankAccount* ba) const
+void ATM::recordTransfer(const double& transferAmount, BankAccount* ba) const
 {
 	string tAN = ba->getAccountNumber(); 
 	string aAN = p_theActiveAccount_->getAccountNumber();
@@ -409,7 +409,7 @@ void ATM::recordTransfer(double transferAmount, BankAccount* ba) const
 }
 
 //------Search Functions
-void ATM::searchTransactions() 
+void ATM::searchTransactions() const
 {
 	//Show UI
 	theUI_.showSearchMenu();

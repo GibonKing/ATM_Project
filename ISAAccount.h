@@ -27,7 +27,7 @@ public:
 	virtual bool canDeposit(const double&) const;
 	virtual void recordDeposit(double amountToDeposit);
 
-	virtual bool canTransferIn(const double&, string&);
+	virtual bool canTransferIn(const double&, string&) const;
 	virtual void recordTransferIn(const double& transferAmount, const string& accNum);
 
 	virtual istream& getAccountDataFromStream(istream& is);

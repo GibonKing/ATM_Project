@@ -26,7 +26,7 @@ double SavingsAccount::maxBorrowable() const
 	return (getBalance() - getMinimumBalance());
 }
 
-bool SavingsAccount::canTransferOut(const double& amt, string& trOutError)
+bool SavingsAccount::canTransferOut(const double& amt, string& trOutError) const
 {
 	//IF AN ERROR SHOULD BE SHOWN
 	if (!canWithdraw(amt))
@@ -35,7 +35,7 @@ bool SavingsAccount::canTransferOut(const double& amt, string& trOutError)
 	return canWithdraw(amt);
 }
 
-bool SavingsAccount::canTransferIn(const double& amt, string& trInError)
+bool SavingsAccount::canTransferIn(const double& amt, string& trInError) const
 {
 	//IF AN ERROR SHOULD BE SHOWN
 	if (!canDeposit(amt))

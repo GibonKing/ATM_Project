@@ -35,7 +35,7 @@ const Date Date::currentDate() {	//returns the current date
 	localtime_s(&t, &now);
 	return Date(t.tm_mday, t.tm_mon + 1,  t.tm_year + 1900);
 }
-bool Date::isValid(Date cd)
+bool Date::isValid(const Date& cd) const
 {
 	bool valid(false);
 
@@ -75,11 +75,13 @@ bool Date::isValid(Date cd)
 
 	return valid;
 }
+
 void Date::setDate(int d, int m, int y) {
 	day_ = d;
 	month_ = m;
 	year_ = y;
 }
+
 string Date::toFormattedString() const {
 //return date formatted as string ("DD/MM/YYYY")
 	ostringstream os;

@@ -31,7 +31,7 @@ Date ISAAccount::getEndDepositPeriod() const
 	return endDepositPeriod_;
 }
 
-bool ISAAccount::canTransferIn(const double& amt, string& trInError)
+bool ISAAccount::canTransferIn(const double& amt, string& trInError) const
 {
 	//IF AN ERROR SHOULD BE SHOWN
 	if (!canDeposit(amt))
