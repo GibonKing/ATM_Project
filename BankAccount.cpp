@@ -37,18 +37,18 @@ const TransactionList BankAccount::getAllDepositTransactions() const {
 
 	TransactionList tempTransactions = transactions_;
 
-	List<Transaction> li = transactions_.getTransactionList();
+	list<Transaction> li = transactions_.getTransactionList();
 
 	//For every transaction
 	for (int i(0); i < transactions_.size(); i++)
 	{
-		if (li.first().getTitle() != "deposit_to_ATM")
+		if (li.front().getTitle() != "deposit_to_ATM")
 		{
 			//add it to transaction list
-			tempTransactions.deleteGivenTransaction(li.first());
+			tempTransactions.deleteGivenTransaction(li.front());
 
 		}
-		li = li.tail();
+		li.pop_front();
 	}
 
 	return tempTransactions;
@@ -177,7 +177,7 @@ void BankAccount::recordTransferOut(const double & transferAmount, const string 
 
 void BankAccount::recordTransferIn(const double & transferAmount, const string & accNum)
 {
-	Transaction t("transfer_in_to_acc_" + accNum, transferAmount);
+	Transaction t("transfer_in_from_acc_" + accNum, transferAmount);
 	transactions_.addNewTransaction(t);
 	updateBalance(transferAmount);
 }
