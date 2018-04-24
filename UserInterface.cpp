@@ -9,6 +9,11 @@
 //public member functions
 //---------------------------------------------------------------------------
 
+UserInterface& UserInterface::getInstance() {
+	static UserInterface instance;
+	return instance;
+}
+
 void UserInterface::wait() const
 {
 	cout << "\n";

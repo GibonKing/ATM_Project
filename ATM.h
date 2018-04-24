@@ -30,7 +30,7 @@ private:
 	//data items
     BankAccount* p_theActiveAccount_;
     Card* p_theCard_;
-    const UserInterface theUI_;
+	UserInterface& theUI_ = UserInterface::getInstance();
 
 	//support functions
     int  validateCard(const string&) const;
