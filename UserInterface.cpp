@@ -145,7 +145,7 @@ double UserInterface::readInDepositAmount() const {
 	return (readInPositiveAmount());
 }
 
-Date UserInterface::readInValidDate(Date cd) const
+Date UserInterface::readInValidDate(const Date& cd) const
 {
 	outputLine("PLEASE INPUT A DATE (DD/MM/YYYY): ");
 	Date aDate;
@@ -165,12 +165,12 @@ Date UserInterface::readInValidDate(Date cd) const
 
 //output functions
 
-void UserInterface::showProduceBalanceOnScreen(double balance) const
+void UserInterface::showProduceBalanceOnScreen(const double& balance) const
 {
 	cout << "\n      THE CURRENT BALANCE IS: " << fixed << setprecision(2) << setfill(' ') << "\234" << setw(12) << balance;
 }
 
-void UserInterface::showWithdrawalOnScreen(bool trAuthorised, double withdrawnAmount) const
+void UserInterface::showWithdrawalOnScreen(const bool& trAuthorised, const double& withdrawnAmount) const
 {
 	if (trAuthorised)
 	{
@@ -182,7 +182,7 @@ void UserInterface::showWithdrawalOnScreen(bool trAuthorised, double withdrawnAm
 	}
 }
 
-void UserInterface::showDepositOnScreen(bool trAuthorised, double depositAmount) const
+void UserInterface::showDepositOnScreen(const bool& trAuthorised, const double& depositAmount) const
 {
 	if (trAuthorised)
 	{
@@ -285,7 +285,7 @@ double UserInterface::readInAmount() const
 
 
 //3c
-void UserInterface::showTransactionsUpToDateOnScreen(bool isEmpty, Date d, int size, string str) const
+void UserInterface::showTransactionsUpToDateOnScreen(const bool& isEmpty, const Date& d, const int& size, const string& str) const
 {
 	if (isEmpty)
 	{
@@ -314,7 +314,7 @@ bool UserInterface::readInConfirmDeletion() const
 	return deletionConfirmed;
 }
 
-void UserInterface::showDeletionOfTransactionsUpToDateOnScreen(int n, Date d, bool deletionConfirmed) const
+void UserInterface::showDeletionOfTransactionsUpToDateOnScreen(const int& n, const Date& d, const bool& deletionConfirmed) const
 {
 	if (deletionConfirmed)
 		cout << "\n      THE " << n << " TRANSACTIONS IN BANK ACCOUNT UP TO DATE " << d.toFormattedString() << " HAVE BEEN DELETED.";

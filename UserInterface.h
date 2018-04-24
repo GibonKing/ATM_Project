@@ -54,9 +54,9 @@ public:
 
 	int readInNumberOfTransactions() const;
 
-	void showProduceBalanceOnScreen(double bal) const;
-	void showDepositOnScreen(bool auth, double deposit) const;
-	void showWithdrawalOnScreen(bool auth, double withdrawal) const;
+	void showProduceBalanceOnScreen(const double& bal) const;
+	void showDepositOnScreen(const bool& auth, const double& deposit) const;
+	void showWithdrawalOnScreen(const bool& auth, const double& withdrawal) const;
 	void showStatementOnScreen(const string&) const;
 	void showAllDepositsOnScreen(const bool&, const string&, const double&) const;
 	void showFundsAvailableOnScreen(const bool&, const string&, const double&) const;
@@ -80,12 +80,12 @@ public:
 		return criteria;
 	};
 
-	Date readInValidDate(Date d) const;
+	Date readInValidDate(const Date& d) const;
 
 	//3c
-	void showTransactionsUpToDateOnScreen(bool, Date, int, string) const;
+	void showTransactionsUpToDateOnScreen(const bool&, const Date&, const int&, const string&) const;
 	bool readInConfirmDeletion() const;
-	void showDeletionOfTransactionsUpToDateOnScreen(int n, Date d, bool deletionConfirmed) const;
+	void showDeletionOfTransactionsUpToDateOnScreen(const int& n, const Date& d, const bool& deletionConfirmed) const;
 
 	//3d
 	void showCardOnScreen(const string&) const;
