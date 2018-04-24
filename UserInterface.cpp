@@ -210,7 +210,7 @@ void UserInterface::showAllDepositsOnScreen(const bool& noTransaction, const str
 	}
 	else
 	{
-		cout << "\n		 TODAYS DATE: ";
+		cout << "\n		 TODAYS DATE: " << Date::currentDate();
 		cout << "\n      TOTAL DEPOSITS MADE: " << setw(0) << total;
 		cout << "\n      " << str;
 	}
@@ -461,10 +461,8 @@ void UserInterface::showMiniStatementOnScreen(const bool& isEmpty, const double&
 {
 	if (!isEmpty)
 	{
-		Date date;
-		Time time;
 		outputHeader("PREPARING MINI STATEMENT...");
-		outputLine("RECENT TRANSACTIONS REQUESTED AT " + time.currentTime().toFormattedString() + " ON " + date.currentDate().toFormattedString() + "\n");
+		outputLine("RECENT TRANSACTIONS REQUESTED AT " + Time::currentTime().toFormattedString() + " ON " + Date::currentDate().toFormattedString() + "\n");
 		outputLine(miniStatement);
 		outputLine("----------------------------------------");
 		//outputLine("CUMULATIVE AMOUNT OF TRANSACTIONS: \234" + to_string(total));
