@@ -24,8 +24,10 @@ public:
 	virtual const string prepareFormattedAccountDetails() const = 0;
 	virtual const string prepareFormattedMiniAccountDetails() const;
 
+
 	virtual bool canTransferOut(const double&, string&);
 	virtual bool canTransferIn(const double&, string&);
+	virtual void recordTransferIn(const double& transferAmount, const string& accNum);
 
 	virtual istream& getAccountDataFromStream(istream& is);
 	virtual ostream& putAccountDetailsInStream(ostream& os) const;

@@ -40,6 +40,12 @@ bool ISAAccount::canTransferIn(const double& amt, string& trInError)
 	return canDeposit(amt);
 }
 
+void ISAAccount::recordTransferIn(const double & transferAmount, const string & accNum)
+{
+	updateCurrentYearlyDeposit(transferAmount);
+	SavingsAccount::recordTransferIn(transferAmount, accNum);
+}
+
 void ISAAccount::updateCurrentYearlyDeposit(const double& amount)
 {
 	currentYearlyDeposit_ += amount;

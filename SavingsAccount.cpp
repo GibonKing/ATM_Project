@@ -44,6 +44,11 @@ bool SavingsAccount::canTransferIn(const double& amt, string& trInError)
 	return canWithdraw(amt);
 }
 
+void SavingsAccount::recordTransferIn(const double & transferAmount, const string & accNum)
+{
+	BankAccount::recordTransferIn(transferAmount, accNum);
+}
+
 
 const string SavingsAccount::prepareFormattedAccountDetails() const
 {

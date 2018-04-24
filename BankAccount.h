@@ -77,13 +77,13 @@ public:
 	virtual bool canTransferIn(const double&, string&);
 
 	void recordTransferOut(const double& transferAmount, const string& accNum);
-	void recordTransferIn(const double& transferAmount, const string& accNum);
+	virtual void recordTransferIn(const double& transferAmount, const string& accNum);
 
 
 	//functions to put data into and get data from streams
 	ostream& putDataInStream(ostream& os) const;
-	virtual ostream& putAccountDetailsInStream(ostream& os) const;
 	istream& getDataFromStream(istream& is);
+	virtual ostream& putAccountDetailsInStream(ostream& os) const;
 	virtual istream& getAccountDataFromStream(istream& is);
 
 	virtual const string prepareFormattedAccountDetails() const = 0;

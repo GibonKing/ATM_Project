@@ -81,7 +81,6 @@ const string BankAccount::getAccountType(char n) {
 	//'0' for bank account, '1' for current account, '2' for saving account, etc.
 	switch (n)
 	{
-	//case BANKACCOUNT_TYPE:		return "BANK"; 
 	case CURRENTACCOUNT_TYPE:	
 		return "CURRENT";
 		break;
@@ -91,7 +90,6 @@ const string BankAccount::getAccountType(char n) {
 	case ISAACCOUNT_TYPE:
 		return "ISA";
 		break;
-//etc..
 	default:
 		return "UNKNOWN";
 	}

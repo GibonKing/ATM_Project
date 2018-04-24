@@ -387,7 +387,6 @@ void ATM::attemptTransfer(BankAccount* ba) const
 	bool trOutOk = p_theActiveAccount_->canTransferOut(transferAmount, trOutError);
 	bool trInOk = ba->canTransferIn(transferAmount, trInError); 
 	
-
 	if (trOutOk && trInOk)
 		recordTransfer(transferAmount, ba);
 
