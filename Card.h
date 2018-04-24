@@ -1,7 +1,10 @@
 //Pascale Vacher - February 18
 //OOP Assignment Task 1c - Semester 2
-//Group Number:
-//Team: (indicate member names, students numbers and courses)
+//Group Number: 1
+//Team: 
+//Alex Fullarton, 26038657, CS4G
+//Jake Hanne, 26027599, CS4G
+//Dave Harrison
 
 #ifndef CardH
 #define CardH
