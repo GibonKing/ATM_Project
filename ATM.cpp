@@ -64,7 +64,7 @@ void ATM::executeCardCommand(int option) {
 					{
 					case 1: m_card1_manageIndividualAccount();
 						break;
-					case 2: m_card1_showFundsAvailableOnAllAccounts();
+					case 2: m_card2_showFundsAvailableOnAllAccounts();
 						break;
 						default:
 							theUI_.showErrorInvalidCommand();
@@ -100,22 +100,28 @@ int ATM::validateCard(const string& filename) const {
 			return VALID_CARD;
 }
 
-void ATM::m_card1_showFundsAvailableOnAllAccounts()
+void ATM::m_card2_showFundsAvailableOnAllAccounts()
 {
 	assert(p_theCard_ != nullptr);
 	List<string> accts = p_theCard_->getAccountsList();
 	bool empty = accts.isEmpty();
-	int Length = accts.length();
 	double maxBorrowable(0.0);
 	string accountDetails("");
 
-	for (int i(0); i < Length; i++)
+	if (!empty)
 	{
-		BankAccount* p_acct = activateAccount(theUI_.accountFilename(accts.first()));
-		maxBorrowable += p_acct->maxBorrowable();
-		accountDetails += p_acct->prepareFormattedAccountDetails();
-		releaseAccount(p_acct, "account_"+ (p_acct->getAccountNumber()));
-		accts.deleteFirst();
+		int length = accts.length();
+		for (int i = 0; i < length; i++)
+		{
+			if ((accts.first()[0] != BANKACCOUNT_TYPE) && (accts.first()[0] != SAVINGSACCOUNT_TYPE))
+			{
+				BankAccount* p_acct = activateAccount(theUI_.accountFilename(accts.first()));
+				maxBorrowable += p_acct->maxBorrowable();
+				accountDetails += p_acct->prepareFormattedAccountDetails();
+				releaseAccount(p_acct, "account_" + (p_acct->getAccountNumber()));
+			}
+			accts.deleteFirst();
+		}
 	}
 	theUI_.showFundsAvailableOnScreen(empty, accountDetails, maxBorrowable);
 
