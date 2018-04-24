@@ -59,8 +59,6 @@ const string SavingsAccount::prepareFormattedAccountDetails() const
 	os << BankAccount::prepareFormattedAccountDetails();
 	os << "\n      MINIMUM BALANCE: \234" << setw(10) << fixed << setprecision(2) << getMinimumBalance();
 	os << "\n      AVAILABLE FUNDS: \234" << setw(10) << fixed << setprecision(2) << availableFunds << endl;
-	os << "\n      ----------------------------------------";
-
 	return os.str();
 }
 

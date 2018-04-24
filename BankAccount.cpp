@@ -275,8 +275,8 @@ const string BankAccount::prepareFormattedAccountDetails() const
 	os << "\n      ACCOUNT NUMBER:  " << accountNumber_;
 	os << "\n      CREATION DATE:   " << creationDate_.toFormattedString();
 	os << fixed << setprecision(2) << setfill(' ');
-	os << "\n      BALANCE:         \234" << setw(10) << balance_;
-	os << "\n      ----------------------------------------";
+	os << "\n      BALANCE:         \234" << setw(10) << balance_ << "\n";
+
 	return os.str();
 }
 
