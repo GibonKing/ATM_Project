@@ -14,6 +14,11 @@ double ChildAccount::getMinimumPaidIn() const{
 	return minimumPaidIn_;
 }
 
+double ChildAccount::maxBorrowable() const
+{
+	return 0;
+}
+
 const string ChildAccount::prepareFormattedAccountDetails() const
 {
 	assert(getAccountType(getAccountNumber()[0]) != "UNKOWN");

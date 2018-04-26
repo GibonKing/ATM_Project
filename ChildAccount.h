@@ -23,6 +23,7 @@ public:
 	//assessors
 	double getMaximumPaidIn() const;
 	double getMinimumPaidIn() const;
+	virtual double maxBorrowable() const;
 
 	virtual bool canDeposit(const double&) const;
 	virtual bool canWithdraw(const double&) const;

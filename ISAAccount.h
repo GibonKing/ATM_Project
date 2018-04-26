@@ -33,7 +33,7 @@ public:
 	virtual const string prepareFormattedAccountDetails() const;
 
 	virtual bool canDeposit(const double&) const;
-	virtual void recordDeposit(double amountToDeposit);
+	virtual void recordDeposit(const double& amountToDeposit);
 
 	virtual bool canTransferIn(const double&, string&) const;
 	virtual void recordTransferIn(const double& transferAmount, const string& accNum);

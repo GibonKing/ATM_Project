@@ -54,7 +54,7 @@ const string SavingsAccount::prepareFormattedAccountDetails() const
 {
 	assert(getAccountType(getAccountNumber()[0]) != "UNKOWN");
 	ostringstream os;
-	double availableFunds = getBalance() - getMinimumBalance();
+	double availableFunds = maxBorrowable();
 
 	os << BankAccount::prepareFormattedAccountDetails();
 	os << "\n      MINIMUM BALANCE: \234" << setw(10) << fixed << setprecision(2) << getMinimumBalance();
